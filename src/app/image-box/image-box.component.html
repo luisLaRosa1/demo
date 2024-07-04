@@ -1,21 +1,19 @@
-<div class="flex justify-center items-center" >
+<div class="flex justify-center items-center">
   <div class="images-container">
     @for (image of template.imagePositions; track image.id; let idx = $index) {
-      <div #host id="presente"
-        (click)="showFileChooser(idx)"
-        class="flex justify-center items-center bg-gray-200 cursor-pointer"
-        [ngStyle]="{
+    <div #host id="presente-{{idx}}" (click)="showFileChooser(idx)"
+      class="flex justify-center items-center bg-gray-200 cursor-pointer" [ngStyle]="{
       'grid-column-end': image.colEnd,
       'grid-column-start': image.colStart,
       'grid-row-start': image.rowStart,
        'grid-row-end': image.rowEnd}">
-        @if (image.image) {
-          <img [src]="image.image" alt="">
-        } @else {
-          <img ngSrc="/assets/image-placeholder.png" width="40" height="40" alt="">
-        }
-        <input type="file" id="fileInput-{{idx}}" [hidden]="true" (change)="onImageChange($event, idx)">
-      </div>
+      @if (image.image) {
+      <img [src]="image.image" alt="">
+      } @else {
+      <img ngSrc="/assets/image-placeholder.png" width="40" height="40" alt="">
+      }
+      <input type="file" id="fileInput-{{idx}}" [hidden]="true" (change)="onImageChange($event, idx)">
+    </div>
     }
   </div>
 </div>

@@ -27,16 +27,6 @@ export class ImageBoxComponent {
   }> = new EventEmitter();
   @Input() templateIdx!: number;
 
-  base64toFile(url: any, filename: any, mimeType: any) {
-    return fetch(url)
-      .then(function (res) {
-        return res.arrayBuffer();
-      })
-      .then(function (buf) {
-        return new File([buf], filename, { type: mimeType });
-      });
-  }
-
   onImageChange(event: any, idx: number) {
     if (event.target.files && event.target.files.length) {
       var img = new Image();
