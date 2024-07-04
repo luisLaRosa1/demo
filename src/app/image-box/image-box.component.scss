@@ -1,0 +1,7 @@
+.images-container {
+  width: 500px;
+  height: 500px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15px, 1fr));
+  gap: .2rem;
+}

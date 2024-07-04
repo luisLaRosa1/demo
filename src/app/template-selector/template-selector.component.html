@@ -1,0 +1,11 @@
+<div class="grid-container">
+  @for (imagePosition of template.imagePositions; track imagePosition.id) {
+    <div
+      class="bg-gray-200 cursor-pointer"
+      [ngStyle]="{
+      'grid-column-end': imagePosition.colEnd,
+      'grid-column-start': imagePosition.colStart,
+      'grid-row-start': imagePosition.rowStart,
+       'grid-row-end': imagePosition.rowEnd}"></div>
+  }
+</div>
