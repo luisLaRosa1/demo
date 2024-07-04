@@ -1,7 +1,7 @@
-<div class="flex justify-center items-center" #host>
+<div class="flex justify-center items-center" >
   <div class="images-container">
     @for (image of template.imagePositions; track image.id; let idx = $index) {
-      <div
+      <div #host id="presente"
         (click)="showFileChooser(idx)"
         class="flex justify-center items-center bg-gray-200 cursor-pointer"
         [ngStyle]="{

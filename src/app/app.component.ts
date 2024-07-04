@@ -7,7 +7,7 @@ import {NgClass} from "@angular/common";
 
 export interface Template {
   id: number;
-  imagePositions: { image: string; rowStart: number; colStart: number; rowEnd: number, colEnd: number, id: number }[]
+  imagePositions: { image: any; rowStart: number; colStart: number; rowEnd: number, colEnd: number, id: number }[]
 }
 
 @Component({
