@@ -1,15 +1,12 @@
 import {
   Component,
   ElementRef,
-  EventEmitter,
   Inject,
   Input,
-  Output,
   ViewChild,
 } from '@angular/core';
 import { Template } from '../app.component';
-import {DOCUMENT, NgClass, NgOptimizedImage, NgStyle} from '@angular/common';
-import { DomSanitizer } from '@angular/platform-browser';
+import { DOCUMENT, NgClass, NgOptimizedImage, NgStyle } from '@angular/common';
 
 @Component({
   selector: 'app-image-box',
@@ -23,43 +20,45 @@ export class ImageBoxComponent {
   @ViewChild('host', { static: false }) hosts!: ElementRef;
   @Input() templateIdx!: number;
 
+  cargoProceso: boolean = true;
+  inicio: number = 0;
+
   onImageChange(event: any, idx: number) {
     if (event.target.files && event.target.files.length) {
       var img = new Image();
       const reader = new FileReader();
 
       reader.readAsDataURL(event.target.files[0]);
-        reader.onload = function () {
-          img.src = reader.result as string;
-        };
-        img.onload = () => {
+      reader.onload = function () {
+        img.src = reader.result as string;
+      };
+      img.onload = () => {
         this.template.imagePositions[idx].image = img.src;
-      }
+      };
     }
   }
 
   constructor(
-    @Inject(DOCUMENT) document: Document,
-    private sanitizer: DomSanitizer
+    @Inject(DOCUMENT) document: Document
   ) {}
 
   showFileChooser(idx: number) {
     document.getElementById(`fileInput-${idx}`)?.click();
   }
 
-  onDragStart(event: any) {
-    event.preventDefault()
-    event.dataTransfer?.setData('imageSrc', event.target?.currentSrc); // Set dragged image ID
+  onDragStart(event: any, idx: any) {
+    event.preventDefault();
+    if (this.cargoProceso) {
+      this.cargoProceso = false;
+      this.inicio = idx;
+    }
   }
 
-  onDrop(event: any) {
+  onDrop(event: any, idx: any) {
     event.preventDefault();
-    // if (event.target === event.currentTarget) { // Don't emit if dropped within the same box
-    //   return;
-    // }
-    console.log(event.dataTransfer)
-    const draggedImage = event.dataTransfer.getData('imageSrc');
-    console.log(draggedImage)
-
+    this.cargoProceso = true;
+    const imagen2 = this.template.imagePositions[idx].image
+    this.template.imagePositions[idx].image = this.template.imagePositions[this.inicio].image;
+    this.template.imagePositions[this.inicio].image = imagen2;
   }
 }
