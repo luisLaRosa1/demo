@@ -58,8 +58,4 @@ export class AppComponent {
       }
     ]
   ]
-
-  handleImageChange(event: {templateIdx: number; imagePositionIdx: number}) {
-    console.log(event);
-  }
 }
