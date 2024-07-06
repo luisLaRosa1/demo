@@ -7,6 +7,8 @@ import { NgClass } from '@angular/common';
 
 export interface Template {
   id: number;
+  column: string;
+  row: string;
   imagePositions: {
     image: any;
     rowStart: number;
@@ -43,6 +45,8 @@ export class AppComponent {
     [
       {
         id: 1,
+        column: '1fr 1fr',
+        row: '1fr',
         imagePositions: [
           {
             rowStart: 1,
@@ -72,6 +76,8 @@ export class AppComponent {
       },
       {
         id: 2,
+        column: '1fr',
+        row: '1fr 1fr',
         imagePositions: [
           {
             rowStart: 1,
@@ -103,6 +109,8 @@ export class AppComponent {
     [
       {
         id: 3,
+        column: '1fr',
+        row: '1fr',
         imagePositions: [
           {
             rowStart: 1,
@@ -144,6 +152,8 @@ export class AppComponent {
       },
       {
         id: 4,
+        column: '1fr',
+        row: '1fr',
         imagePositions: [
           {
             rowStart: 1,
