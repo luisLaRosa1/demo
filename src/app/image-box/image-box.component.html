@@ -1,22 +1,25 @@
 <div class="flex justify-center items-center">
   <div class="images-container">
     @for (image of template.imagePositions; track image.id; let idx = $index) {
-      <div #host id="presente-{{idx}}" (click)="showFileChooser(idx)"
-           (dragover)="onDragStart($event,idx)"
-           (drop)="onDrop($event,idx)"
-           class="flex justify-center items-center bg-gray-200"
-           [ngClass]="image.image ? 'cursor-grab' : 'cursor-pointer'" [ngStyle]="{
-      'grid-column-end': image.colEnd,
-      'grid-column-start': image.colStart,
-      'grid-row-start': image.rowStart,
-       'grid-row-end': image.rowEnd}">
-        @if (image.image) {
-          <img [src]="image.image" class="h-full w-full object-cover" alt="">
-        } @else {
-          <img ngSrc="/assets/image-placeholder.png" width="40" height="40" alt="">
-        }
-        <input type="file" id="fileInput-{{idx}}" [hidden]="true" (change)="onImageChange($event, idx)">
-      </div>
+    <div #host id="presente-{{idx}}" (click)="showFileChooser(idx)" (dragover)="onDragStart($event,idx)"
+      (drop)="onDrop($event,idx)" class="flex justify-center items-center bg-gray-200"
+      [ngClass]="image.image ? 'cursor-grab' : 'cursor-pointer'" [ngStyle]="{
+        'grid-column-end': image.colEnd,
+        'grid-column-start': image.colStart,
+        'grid-row-start': image.rowStart,
+        'grid-row-end': image.rowEnd,
+        'border-right': image.right ? '10px solid red' : '',
+        'border-left': image.left ? '10px solid blue' : '',
+        'border-top': image.top ? '10px solid green' : '',
+        'border-bottom': image.bottom ? '10px solid yellow' : '',
+      }">
+      @if (image.image) {
+      <img [src]="image.image" class="h-full w-full object-cover" alt="">
+      } @else {
+      <img ngSrc="/assets/image-placeholder.png" width="40" height="40" alt="">
+      }
+      <input type="file" id="fileInput-{{idx}}" [hidden]="true" (change)="onImageChange($event, idx)">
+    </div>
     }
   </div>
 </div>
