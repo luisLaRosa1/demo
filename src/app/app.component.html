@@ -17,7 +17,7 @@
       @if (selectedLayout) {
         <div class="mt-5 flex gap-5">
           @for (template of templates[selectedLayout - 2]; track template.id) {
-            <app-template-selector (click)="selectedTemplate = template" [template]="template"></app-template-selector>
+            <app-template-selector (click)="regresarFuncionInicial(template)" [template]="template"></app-template-selector>
           }
         </div>
       }
