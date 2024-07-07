@@ -29,7 +29,6 @@ export class ImageBoxComponent {
 
   onresized(event: ResizedEvent, activo?: boolean, index: number = 0){
     if(event.newRect != null && activo){
-      console.log(index)
       this.valor.emit({height: event.newRect.height,  width: event.newRect.width, id: this.template.id})
     }
   }
