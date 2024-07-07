@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NgClass } from '@angular/common';
-import { LayoutSelectorComponent } from './custom-grid/layout-selector/layout-selector.component';
 import { TemplateSelectorComponent } from './custom-grid/template-selector/template-selector.component';
 import { ImageBoxComponent } from './custom-grid/image-box/image-box.component';
 
@@ -33,7 +32,6 @@ export interface Template {
   standalone: true,
   imports: [
     RouterOutlet,
-    LayoutSelectorComponent,
     TemplateSelectorComponent,
     ImageBoxComponent,
     NgClass,
