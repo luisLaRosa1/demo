@@ -12,7 +12,7 @@ import {Template} from "../custom-grid.component";
   styleUrl: './template-selector.component.scss'
 })
 export class TemplateSelectorComponent {
-  @Input() template!: Template
+  @Input() template!: Template;
 
   formatColumnPosition(colEnd: number): string {
     return `span ${colEnd}`
