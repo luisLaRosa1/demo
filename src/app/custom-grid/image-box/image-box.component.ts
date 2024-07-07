@@ -5,8 +5,8 @@ import {
   Input,
   ViewChild,
 } from '@angular/core';
-import { Template } from '../app.component';
 import { DOCUMENT, NgClass, NgOptimizedImage, NgStyle } from '@angular/common';
+import {Template} from "../custom-grid.component";
 
 @Component({
   selector: 'app-image-box',

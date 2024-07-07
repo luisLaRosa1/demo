@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, Output, output} from '@angular/core';
-import {Template} from "../app.component";
 import {NgStyle} from "@angular/common";
+import {Template} from "../custom-grid.component";
 
 @Component({
   selector: 'app-template-selector',
