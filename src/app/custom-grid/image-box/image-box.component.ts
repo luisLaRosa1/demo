@@ -27,6 +27,11 @@ export class ImageBoxComponent {
   cargoProceso: boolean = true;
   inicio: number = 0;
 
+  constructor(@Inject(DOCUMENT) document: Document) {
+    console.log(this.template)
+  }
+
+
   onresized(event: ResizedEvent, activo?: boolean, index: number = 0) {
     if (event.newRect != null && activo) {
       this.valor.emit({
@@ -54,7 +59,6 @@ export class ImageBoxComponent {
     }
   }
 
-  constructor(@Inject(DOCUMENT) document: Document) {}
 
   showFileChooser(idx: number) {
     if (!this.template.imagePositions[idx].image) {

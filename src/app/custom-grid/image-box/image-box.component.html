@@ -17,6 +17,7 @@
         'margin-left': !image.resize && template.id == 1 || !image.resize && template.id == 3 ? (espaciado(image.width)+'px') : '0px',
         'margin-top': !image.resize && template.id == 2 ? (espaciado(image.height)+'px') : '0px'
       }">
+      {{image.image}}
       @if (image.image) {
       <img [src]="image.image" class="h-full w-full object-cover" alt="">
       } @else {
