@@ -1,47 +1,40 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { NgClass } from '@angular/common';
-import { LayoutSelectorComponent } from './custom-grid/layout-selector/layout-selector.component';
-import { TemplateSelectorComponent } from './custom-grid/template-selector/template-selector.component';
-import { ImageBoxComponent } from './custom-grid/image-box/image-box.component';
-
-export interface Dimension {
-  width: number;
-  height: number;
-  id: number;
-}
+import {ImageBoxComponent} from "./image-box/image-box.component";
+import {TemplateSelectorComponent} from "./template-selector/template-selector.component";
+import {LayoutSelectorComponent} from "./layout-selector/layout-selector.component";
+import {NgClass} from "@angular/common";
 
 export interface Template {
   id: number;
+  column: string;
+  row: string;
   imagePositions: {
-    resize?: boolean,
     image: any;
     rowStart: number;
     colStart: number;
     rowEnd: number;
     colEnd: number;
     id: number;
-    width: string;
-    height: string;
-    minwidth: string;
-    minheight: string;
+    right: boolean;
+    left: boolean;
+    top: boolean;
+    bottom: boolean;
   }[];
 }
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-custom-grid',
   standalone: true,
   imports: [
-    RouterOutlet,
     LayoutSelectorComponent,
     TemplateSelectorComponent,
     ImageBoxComponent,
     NgClass,
   ],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+  templateUrl: './custom-grid.component.html',
+  styleUrl: './custom-grid.component.scss'
 })
-export class AppComponent {
+export class CustomGridComponent {
   selectedLayout!: number;
   selectedTemplate: any;
 
@@ -50,19 +43,20 @@ export class AppComponent {
     [
       {
         id: 1,
+        column: '1fr 1fr',
+        row: '1fr',
         imagePositions: [
           {
-            resize: true,
             rowStart: 1,
             colStart: 1,
             rowEnd: 2,
             colEnd: 2,
             id: 1,
             image: '',
-            width: '250px',
-            height: '500px',
-            minwidth: '50px',
-            minheight: '500px',
+            right: true,
+            left: false,
+            bottom: false,
+            top: false,
           },
           {
             rowStart: 1,
@@ -71,28 +65,29 @@ export class AppComponent {
             colEnd: 3,
             id: 2,
             image: '',
-            width: '250px',
-            height: '500px',
-            minwidth: '50px',
-            minheight: '500px',
+            right: false,
+            left: true,
+            bottom: false,
+            top: false,
           },
         ],
       },
       {
         id: 2,
+        column: '1fr',
+        row: '1fr 1fr',
         imagePositions: [
           {
-            resize: true,
             rowStart: 1,
             colStart: 1,
             rowEnd: 1,
             colEnd: 2,
             id: 1,
             image: '',
-            width: '490px',
-            height: '50px',
-            minwidth: '490px',
-            minheight: '250px',
+            right: false,
+            left: false,
+            bottom: true,
+            top: false,
           },
           {
             rowStart: 2,
@@ -101,10 +96,10 @@ export class AppComponent {
             colEnd: 2,
             id: 2,
             image: '',
-            width: '490px',
-            height: '50px',
-            minwidth: '490px',
-            minheight: '250px',
+            right: false,
+            left: false,
+            bottom: false,
+            top: true,
           },
         ],
       },
@@ -112,6 +107,8 @@ export class AppComponent {
     [
       {
         id: 3,
+        column: '1fr',
+        row: '1fr',
         imagePositions: [
           {
             rowStart: 1,
@@ -120,10 +117,10 @@ export class AppComponent {
             colEnd: 1,
             id: 1,
             image: '',
-            width: '490px',
-            height: '50px',
-            minwidth: '245px',
-            minheight: '490px'
+            right: false,
+            left: false,
+            bottom: false,
+            top: false,
           },
           {
             rowStart: 1,
@@ -132,10 +129,10 @@ export class AppComponent {
             colEnd: 2,
             id: 1,
             image: '',
-            width: '490px',
-            height: '50px',
-            minwidth: '245px',
-            minheight: '490px'
+            right: false,
+            left: false,
+            bottom: false,
+            top: false,
           },
           {
             rowStart: 2,
@@ -144,15 +141,17 @@ export class AppComponent {
             colEnd: 3,
             id: 1,
             image: '',
-            width: '490px',
-            height: '50px',
-            minwidth: '245px',
-            minheight: '490px'
+            right: false,
+            left: false,
+            bottom: false,
+            top: false,
           },
         ],
       },
       {
         id: 4,
+        column: '1fr',
+        row: '1fr',
         imagePositions: [
           {
             rowStart: 1,
@@ -161,10 +160,10 @@ export class AppComponent {
             colEnd: 3,
             id: 1,
             image: '',
-            width: '490px',
-            height: '50px',
-            minwidth: '245px',
-            minheight: '490px'
+            right: false,
+            left: false,
+            bottom: false,
+            top: false,
           },
           {
             rowStart: 2,
@@ -173,10 +172,10 @@ export class AppComponent {
             colEnd: 2,
             id: 1,
             image: '',
-            width: '490px',
-            height: '50px',
-            minwidth: '245px',
-            minheight: '490px'
+            right: false,
+            left: false,
+            bottom: false,
+            top: false,
           },
           {
             rowStart: 2,
@@ -185,21 +184,13 @@ export class AppComponent {
             colEnd: 2,
             id: 1,
             image: '',
-            width: '490px',
-            height: '50px',
-            minwidth: '245px',
-            minheight: '490px'
+            right: false,
+            left: false,
+            bottom: false,
+            top: false,
           },
         ],
       },
     ],
   ];
-
-  nuevadimension(dimen: Dimension){
-    console.log(dimen);
-    const temp = this.templates[0].findIndex(p => p.id == dimen.id);
-    this.templates[0][0].imagePositions[0].width = `${dimen.width}px`;
-    this.templates[0][0].imagePositions[1].width =   `${250 - (dimen.width - 250)}px`;
-    //console.log(this.templates[0][0].imagePositions)
-  }
 }

@@ -7,7 +7,7 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { Dimension, Template } from '../app.component';
+import { Dimension, Template } from '../../app.component';
 import { DOCUMENT, NgClass, NgOptimizedImage, NgStyle } from '@angular/common';
 import { AngularResizeEventModule, ResizedEvent } from 'angular-resize-event';
 
