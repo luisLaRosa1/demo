@@ -14,7 +14,8 @@
         'height': image.height,
         'min-width': image.minwidth,
         'min-height': image.minheight,
-        'margin-left': !image.resize && template.id == 1 ? (espaciado(image.width)+'px') : '0px'
+        'margin-left': !image.resize && template.id == 1 ? (espaciado(image.width)+'px') : '0px',
+        'margin-top': !image.resize && template.id == 2 ? (espaciado(image.height)+'px') : '0px'
       }">
       @if (image.image) {
       <img [src]="image.image" class="h-full w-full object-cover" alt="">

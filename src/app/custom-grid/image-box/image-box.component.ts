@@ -27,33 +27,39 @@ export class ImageBoxComponent {
   cargoProceso: boolean = true;
   inicio: number = 0;
 
-  onresized(event: ResizedEvent, activo?: boolean, index: number = 0){
-    if(event.newRect != null && activo){
-      this.valor.emit({height: event.newRect.height,  width: event.newRect.width, id: this.template.id})
+  onresized(event: ResizedEvent, activo?: boolean, index: number = 0) {
+    if (event.newRect != null && activo) {
+      this.valor.emit({
+        height: event.newRect.height,
+        width: event.newRect.width,
+        id: this.template.id,
+      });
     }
   }
 
   onImageChange(event: any, idx: number) {
-    if (event.target.files && event.target.files.length) {
-      var img = new Image();
-      const reader = new FileReader();
+    if (!this.template.imagePositions[idx].image) {
+      if (event.target.files && event.target.files.length) {
+        var img = new Image();
+        const reader = new FileReader();
 
-      reader.readAsDataURL(event.target.files[0]);
-      reader.onload = function () {
-        img.src = reader.result as string;
-      };
-      img.onload = () => {
-        this.template.imagePositions[idx].image = img.src;
-      };
+        reader.readAsDataURL(event.target.files[0]);
+        reader.onload = function () {
+          img.src = reader.result as string;
+        };
+        img.onload = () => {
+          this.template.imagePositions[idx].image = img.src;
+        };
+      }
     }
   }
 
-  constructor(
-    @Inject(DOCUMENT) document: Document
-  ) {}
+  constructor(@Inject(DOCUMENT) document: Document) {}
 
   showFileChooser(idx: number) {
-    document.getElementById(`fileInput-${idx}`)?.click();
+    if (!this.template.imagePositions[idx].image) {
+      document.getElementById(`fileInput-${idx}`)?.click();
+    }
   }
 
   onDragStart(event: any, idx: any) {
@@ -67,12 +73,13 @@ export class ImageBoxComponent {
   onDrop(event: any, idx: any) {
     event.preventDefault();
     this.cargoProceso = true;
-    const imagen2 = this.template.imagePositions[idx].image
-    this.template.imagePositions[idx].image = this.template.imagePositions[this.inicio].image;
+    const imagen2 = this.template.imagePositions[idx].image;
+    this.template.imagePositions[idx].image =
+      this.template.imagePositions[this.inicio].image;
     this.template.imagePositions[this.inicio].image = imagen2;
   }
 
-  espaciado(width:string): number{
-    return 250 - parseFloat(width.replace('px',''))
+  espaciado(width: string): number {
+    return 250 - parseFloat(width.replace('px', ''));
   }
 }

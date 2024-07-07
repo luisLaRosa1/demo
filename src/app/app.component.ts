@@ -90,7 +90,7 @@ export class AppComponent {
             width: '490px',
             height: '250px',
             minwidth: '500px',
-            minheight: '250px',
+            minheight: '50px',
           },
           {
             rowStart: 2,
@@ -102,7 +102,7 @@ export class AppComponent {
             width: '500px',
             height: '250px',
             minwidth: '500px',
-            minheight: '250px',
+            minheight: '50px',
           },
         ],
       },
@@ -201,6 +201,12 @@ export class AppComponent {
           250 - (dimen.width - 250)
         }px`;
         break;
+      case 2:
+        this.templates[0][1].imagePositions[0].height = `${dimen.height}px`;
+        this.templates[0][1].imagePositions[1].height = `${
+          250 - (dimen.height - 250)
+        }px`;
+        break;
     }
   }
 
@@ -252,7 +258,7 @@ export class AppComponent {
               width: '490px',
               height: '250px',
               minwidth: '500px',
-              minheight: '250px',
+              minheight: '50px',
             },
             {
               rowStart: 2,
@@ -264,7 +270,7 @@ export class AppComponent {
               width: '500px',
               height: '250px',
               minwidth: '500px',
-              minheight: '250px',
+              minheight: '50px',
             },
           ],
         },
@@ -354,9 +360,7 @@ export class AppComponent {
         },
       ],
     ];
-    const templ = this.templates[0].findIndex(
-      (p) => p.id == template.id
-    );
+    const templ = this.templates[0].findIndex((p) => p.id == template.id);
 
     this.selectedTemplate = this.templates[0][templ];
   }
