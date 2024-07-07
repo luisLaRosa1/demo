@@ -1,17 +1,20 @@
 import {
   Component,
   ElementRef,
+  EventEmitter,
   Inject,
   Input,
+  Output,
   ViewChild,
 } from '@angular/core';
-import { Template } from '../app.component';
+import { Dimension, Template } from '../app.component';
 import { DOCUMENT, NgClass, NgOptimizedImage, NgStyle } from '@angular/common';
+import { AngularResizeEventModule, ResizedEvent } from 'angular-resize-event';
 
 @Component({
   selector: 'app-image-box',
   standalone: true,
-  imports: [NgStyle, NgOptimizedImage, NgClass],
+  imports: [NgStyle, NgOptimizedImage, NgClass, AngularResizeEventModule],
   templateUrl: './image-box.component.html',
   styleUrl: './image-box.component.scss',
 })
@@ -19,9 +22,17 @@ export class ImageBoxComponent {
   @Input() template!: Template;
   @ViewChild('host', { static: false }) hosts!: ElementRef;
   @Input() templateIdx!: number;
+  @Output() valor = new EventEmitter<Dimension>();
 
   cargoProceso: boolean = true;
   inicio: number = 0;
+
+  onresized(event: ResizedEvent, activo?: boolean, index: number = 0){
+    if(event.newRect != null && activo){
+      console.log(index)
+      this.valor.emit({height: event.newRect.height,  width: event.newRect.width, id: this.template.id})
+    }
+  }
 
   onImageChange(event: any, idx: number) {
     if (event.target.files && event.target.files.length) {
@@ -60,5 +71,9 @@ export class ImageBoxComponent {
     const imagen2 = this.template.imagePositions[idx].image
     this.template.imagePositions[idx].image = this.template.imagePositions[this.inicio].image;
     this.template.imagePositions[this.inicio].image = imagen2;
+  }
+
+  espaciado(width:string): number{
+    return 250 - parseFloat(width.replace('px',''))
   }
 }
