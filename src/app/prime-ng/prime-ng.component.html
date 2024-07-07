@@ -1,0 +1,13 @@
+<div class="p-16">
+  <h1 class="text-4xl mb-10">Prime NG</h1>
+
+  <p-accordion [activeIndex]="0">
+    <p-accordionTab header="Componentes de Prime NG">
+      <p>Form</p>
+      <p-autoComplete
+        [(ngModel)]="selectedItem"
+        [suggestions]="suggestions"
+        (completeMethod)="search($event)" />
+    </p-accordionTab>
+  </p-accordion>
+</div>

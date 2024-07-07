@@ -7,9 +7,9 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { Dimension, Template } from '../../app.component';
 import { DOCUMENT, NgClass, NgOptimizedImage, NgStyle } from '@angular/common';
 import { AngularResizeEventModule, ResizedEvent } from 'angular-resize-event';
+import {Dimension, Template} from "../custom-grid.component";
 
 @Component({
   selector: 'app-image-box',
