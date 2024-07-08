@@ -26,8 +26,6 @@
       @if (image.image) {
       <img [src]="image.image" class="h-full w-full object-cover" alt="">
       } @else {
-
-      {{idx}}
       <img ngSrc="/assets/image-placeholder.png" width="40" height="40" alt="">
       }
       <input type="file" id="fileInput-{{idx}}" [hidden]="true" (change)="onImageChange($event, idx)">
