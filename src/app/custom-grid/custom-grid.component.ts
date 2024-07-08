@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-import {ImageBoxComponent} from "./image-box/image-box.component";
-import {TemplateSelectorComponent} from "./template-selector/template-selector.component";
-import {NgClass} from "@angular/common";
+import { ImageBoxComponent } from './image-box/image-box.component';
+import { TemplateSelectorComponent } from './template-selector/template-selector.component';
+import { NgClass } from '@angular/common';
 
 export interface Dimension {
   width: number;
   height: number;
   id: number;
+  tipo: number;
 }
 
 export interface Template {
@@ -26,17 +27,12 @@ export interface Template {
   }[];
 }
 
-
 @Component({
   selector: 'app-custom-grid',
   standalone: true,
-  imports: [
-    ImageBoxComponent,
-    TemplateSelectorComponent,
-    NgClass
-  ],
+  imports: [ImageBoxComponent, TemplateSelectorComponent, NgClass],
   templateUrl: './custom-grid.component.html',
-  styleUrl: './custom-grid.component.scss'
+  styleUrl: './custom-grid.component.scss',
 })
 export class CustomGridComponent {
   selectedLayout!: number;
@@ -86,7 +82,7 @@ export class CustomGridComponent {
             colEnd: 2,
             id: 1,
             image: '',
-            width: '490px',
+            width: '500px',
             height: '250px',
             minwidth: '500px',
             minheight: '50px',
@@ -153,40 +149,42 @@ export class CustomGridComponent {
         id: 4,
         imagePositions: [
           {
+            resize: true,
             rowStart: 1,
             colStart: 1,
             rowEnd: 1,
             colEnd: 3,
             id: 1,
             image: '',
-            width: '490px',
-            height: '50px',
-            minwidth: '245px',
-            minheight: '490px',
+            width: '500px',
+            height: '250px',
+            minwidth: '50px',
+            minheight: '50px',
           },
           {
+            resize: true,
             rowStart: 2,
             colStart: 1,
             rowEnd: 2,
             colEnd: 2,
-            id: 1,
+            id: 2,
             image: '',
-            width: '490px',
-            height: '50px',
-            minwidth: '245px',
-            minheight: '490px',
+            width: '250px',
+            height: '250px',
+            minwidth: '50px',
+            minheight: '50px',
           },
           {
             rowStart: 2,
             colStart: 2,
             rowEnd: 2,
             colEnd: 2,
-            id: 1,
+            id: 3,
             image: '',
-            width: '490px',
-            height: '50px',
-            minwidth: '245px',
-            minheight: '490px',
+            width: '250px',
+            height: '250px',
+            minwidth: '50px',
+            minheight: '50px',
           },
         ],
       },
@@ -194,7 +192,6 @@ export class CustomGridComponent {
   ];
 
   nuevadimension(dimen: Dimension) {
-    console.log(dimen);
     switch (dimen.id) {
       case 1:
         this.templates[0][0].imagePositions[0].width = `${dimen.width}px`;
@@ -209,13 +206,38 @@ export class CustomGridComponent {
         }px`;
         break;
       case 3:
-        this.templates[1][0].imagePositions[0].width = `${dimen.width}px`;
-        this.templates[1][0].imagePositions[1].width = `${
-          250 - (dimen.width - 250)
-        }px`;
-        this.templates[1][0].imagePositions[2].width = `${
-          250 - (dimen.width - 250)
-        }px`;
+        if (dimen.tipo == 1) {
+          this.templates[1][0].imagePositions[0].width = `${dimen.width}px`;
+          this.templates[1][0].imagePositions[1].width = `${
+            250 - (dimen.width - 250)
+          }px`;
+          this.templates[1][0].imagePositions[2].width = `${
+            250 - (dimen.width - 250)
+          }px`;
+        }
+        if (dimen.tipo == 2) {
+          this.templates[1][0].imagePositions[1].height = `${dimen.height}px`;
+          this.templates[1][0].imagePositions[2].height = `${
+            250 - (dimen.height - 250)
+          }px`;
+        }
+        break;
+      case 4:
+        if (dimen.tipo == 1) {
+          this.templates[1][1].imagePositions[0].height = `${dimen.height}px`;
+          this.templates[1][1].imagePositions[1].height = `${
+            250 - (dimen.height - 250)
+          }px`;
+          this.templates[1][1].imagePositions[2].height = `${
+            250 - (dimen.height - 250)
+          }px`;
+        }
+        if (dimen.tipo == 2) {
+          this.templates[1][1].imagePositions[1].width = `${dimen.width}px`;
+          this.templates[1][1].imagePositions[2].width = `${
+            250 - (dimen.width - 250)
+          }px`;
+        }
         break;
     }
   }
@@ -234,7 +256,7 @@ export class CustomGridComponent {
               rowEnd: 2,
               colEnd: 2,
               id: 1,
-              image: '/assets/image-1.jpeg',
+              image: '',
               width: '250px',
               height: '500px',
               minwidth: '50px',
@@ -246,7 +268,7 @@ export class CustomGridComponent {
               rowEnd: 2,
               colEnd: 3,
               id: 2,
-              image: '/assets/image-2.jpeg',
+              image: '',
               width: '250px',
               height: '500px',
               minwidth: '50px',
@@ -265,7 +287,7 @@ export class CustomGridComponent {
               colEnd: 2,
               id: 1,
               image: '',
-              width: '490px',
+              width: '500px',
               height: '250px',
               minwidth: '500px',
               minheight: '50px',
@@ -332,40 +354,42 @@ export class CustomGridComponent {
           id: 4,
           imagePositions: [
             {
+              resize: true,
               rowStart: 1,
               colStart: 1,
               rowEnd: 1,
               colEnd: 3,
               id: 1,
               image: '',
-              width: '490px',
-              height: '50px',
-              minwidth: '245px',
-              minheight: '490px',
+              width: '500px',
+              height: '250px',
+              minwidth: '50px',
+              minheight: '50px',
             },
             {
+              resize: true,
               rowStart: 2,
               colStart: 1,
               rowEnd: 2,
               colEnd: 2,
-              id: 1,
+              id: 2,
               image: '',
-              width: '490px',
-              height: '50px',
-              minwidth: '245px',
-              minheight: '490px',
+              width: '250px',
+              height: '250px',
+              minwidth: '50px',
+              minheight: '50px',
             },
             {
               rowStart: 2,
               colStart: 2,
               rowEnd: 2,
               colEnd: 2,
-              id: 1,
+              id: 3,
               image: '',
-              width: '490px',
-              height: '50px',
-              minwidth: '245px',
-              minheight: '490px',
+              width: '250px',
+              height: '250px',
+              minwidth: '50px',
+              minheight: '50px',
             },
           ],
         },

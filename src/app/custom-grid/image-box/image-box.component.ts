@@ -86,11 +86,12 @@ export class ImageBoxComponent {
     return 250 - parseFloat(width.replace('px', ''));
   }
 
-  handleDrag(event: DragEvent, idx: number) {
+  handleDrag(event: DragEvent, index: number = 0) {
     this.valor.emit({
       height: event.clientY,
       width: Math.abs(event.clientX - 570),
       id: this.template.id,
+      tipo: index,
     });
   }
 }
