@@ -7,14 +7,14 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { Dimension, Template } from '../../app.component';
-import { DOCUMENT, NgClass, NgOptimizedImage, NgStyle } from '@angular/common';
+import {DOCUMENT, JsonPipe, NgClass, NgOptimizedImage, NgStyle} from '@angular/common';
 import { AngularResizeEventModule, ResizedEvent } from 'angular-resize-event';
+import {Dimension, Template} from "../custom-grid.component";
 
 @Component({
   selector: 'app-image-box',
   standalone: true,
-  imports: [NgStyle, NgOptimizedImage, NgClass, AngularResizeEventModule],
+  imports: [NgStyle, NgOptimizedImage, NgClass, AngularResizeEventModule, JsonPipe],
   templateUrl: './image-box.component.html',
   styleUrl: './image-box.component.scss',
 })
@@ -26,6 +26,9 @@ export class ImageBoxComponent {
 
   cargoProceso: boolean = true;
   inicio: number = 0;
+
+  constructor(@Inject(DOCUMENT) document: Document) {}
+
 
   onresized(event: ResizedEvent, activo?: boolean, index: number = 0) {
     if (event.newRect != null && activo) {
@@ -55,7 +58,6 @@ export class ImageBoxComponent {
     }
   }
 
-  constructor(@Inject(DOCUMENT) document: Document) {}
 
   showFileChooser(idx: number) {
     if (!this.template.imagePositions[idx].image) {
@@ -82,5 +84,13 @@ export class ImageBoxComponent {
 
   espaciado(width: string): number {
     return 250 - parseFloat(width.replace('px', ''));
+  }
+
+  handleDrag(event: DragEvent, idx: number) {
+    this.valor.emit({
+      height: event.clientY,
+      width: Math.abs(event.clientX - 570),
+      id: this.template.id,
+    });
   }
 }
