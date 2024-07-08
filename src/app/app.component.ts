@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { NgClass } from '@angular/common';
 import { TemplateSelectorComponent } from './custom-grid/template-selector/template-selector.component';
 import { ImageBoxComponent } from './custom-grid/image-box/image-box.component';
+import { ImageComponent } from './custom-grid/image/image.component';
 
 
 @Component({
@@ -12,6 +13,7 @@ import { ImageBoxComponent } from './custom-grid/image-box/image-box.component';
     RouterOutlet,
     TemplateSelectorComponent,
     ImageBoxComponent,
+    ImageComponent,
     NgClass,
   ],
   templateUrl: './app.component.html',

@@ -10,22 +10,23 @@ import {
 import {DOCUMENT, JsonPipe, NgClass, NgOptimizedImage, NgStyle} from '@angular/common';
 import { AngularResizeEventModule, ResizedEvent } from 'angular-resize-event';
 import {Dimension, Template} from "../custom-grid.component";
+import { ImageComponent } from '../image/image.component';
 
 @Component({
   selector: 'app-image-box',
   standalone: true,
-  imports: [NgStyle, NgOptimizedImage, NgClass, AngularResizeEventModule, JsonPipe],
+  imports: [NgStyle, NgOptimizedImage, NgClass, AngularResizeEventModule, JsonPipe, ImageComponent],
   templateUrl: './image-box.component.html',
   styleUrl: './image-box.component.scss',
 })
 export class ImageBoxComponent {
   @Input() template!: Template;
-  @ViewChild('host', { static: false }) hosts!: ElementRef;
   @Input() templateIdx!: number;
   @Output() valor = new EventEmitter<Dimension>();
 
   cargoProceso: boolean = true;
   inicio: number = 0;
+  isDragable: boolean = true;
 
   constructor(@Inject(DOCUMENT) document: Document) {}
 
@@ -75,6 +76,7 @@ export class ImageBoxComponent {
 
   onDrop(event: any, idx: any) {
     event.preventDefault();
+    this.isDragable = false;
     this.cargoProceso = true;
     const imagen2 = this.template.imagePositions[idx].image;
     this.template.imagePositions[idx].image =
