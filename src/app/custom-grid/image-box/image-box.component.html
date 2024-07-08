@@ -1,7 +1,7 @@
 <div class="flex justify-center items-center">
   <div class="images-container">
     @for (image of template.imagePositions; track image.id; let idx = $index) {
-    <div #host id="presente-{{idx}}" (click)="showFileChooser(idx)" (dragover)="onDragStart($event,idx)"
+      <div #host id="presente-{{idx}}" (click)="showFileChooser(idx)" (dragover)="onDragStart($event,idx)"
       (drop)="onDrop($event,idx)" class="flex justify-center items-center bg-gray-200 image-container ne-resize"
       (resized)="onresized($event,image.resize,image.id)" [ngClass]="image.image ? 'cursor-grab' : 'cursor-pointer'"
       [ngStyle]="{
@@ -17,7 +17,7 @@
         'margin-left': (!image.resize && (template.id == 1)) || (template.id == 3 && image.id != 1) || (template.id == 4 && image.id == 3) ? (espaciado(image.width)+'px') : '0px',
         'margin-top': (!image.resize && (template.id == 2 || (template.id == 3 && image.id == 3)) || (template.id == 4 && image.id != 1)) ? (espaciado(image.height)+'px') : '0px'
       }">
-      @if (idx === 0) {
+       @if (idx === 0) {
         <div (drag)="handleDrag($event, idx)" [draggable]="true" class="z-40 w-[5px] h-[40px] rounded-bl-full rounded-tl-full bg-white absolute right-0 top-[250] cursor-col-resize"></div>
       }
       @if (idx === 1) {
@@ -26,6 +26,8 @@
       @if (image.image) {
       <img [src]="image.image" class="h-full w-full object-cover" alt="">
       } @else {
+
+      {{idx}}
       <img ngSrc="/assets/image-placeholder.png" width="40" height="40" alt="">
       }
       <input type="file" id="fileInput-{{idx}}" [hidden]="true" (change)="onImageChange($event, idx)">
