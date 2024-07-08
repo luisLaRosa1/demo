@@ -86,9 +86,10 @@ export class ImageBoxComponent {
   }
 
   handleDrag(event: DragEvent, idx: number) {
+    // console.log(window.innerWidth);
     this.valor.emit({
       height: event.clientY,
-      width: Math.abs(event.clientX - 570),
+      width: Math.abs(event.clientX - 700),
       id: this.template.id,
     });
   }

@@ -194,7 +194,6 @@ export class CustomGridComponent {
   ];
 
   nuevadimension(dimen: Dimension) {
-    console.log(dimen);
     switch (dimen.id) {
       case 1:
         this.templates[0][0].imagePositions[0].width = `${dimen.width}px`;
