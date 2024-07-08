@@ -8,6 +8,7 @@ export interface Dimension {
   width: number;
   height: number;
   id: number;
+  tipo: number;
 }
 
 export interface Template {
@@ -166,6 +167,7 @@ export class AppComponent {
             minheight: '490px',
           },
           {
+            resize: true,
             rowStart: 2,
             colStart: 1,
             rowEnd: 2,
@@ -209,13 +211,21 @@ export class AppComponent {
         }px`;
         break;
       case 3:
-        this.templates[1][0].imagePositions[0].width = `${dimen.width}px`;
-        this.templates[1][0].imagePositions[1].width = `${
-          250 - (dimen.width - 250)
-        }px`;
-        this.templates[1][0].imagePositions[2].width = `${
-          250 - (dimen.width - 250)
-        }px`;
+        if (dimen.tipo == 1) {
+          this.templates[1][0].imagePositions[0].width = `${dimen.width}px`;
+          this.templates[1][0].imagePositions[1].width = `${
+            250 - (dimen.width - 250)
+          }px`;
+          this.templates[1][0].imagePositions[2].width = `${
+            250 - (dimen.width - 250)
+          }px`;
+        }
+        if (dimen.tipo == 2) {
+          this.templates[1][0].imagePositions[1].height = `${dimen.height}px`;
+          this.templates[1][0].imagePositions[2].height = `${
+            250 - (dimen.height - 250)
+          }px`;
+        }
         break;
     }
   }
@@ -303,11 +313,12 @@ export class AppComponent {
               minheight: '50px',
             },
             {
+              resize: true,
               rowStart: 1,
               colStart: 2,
               rowEnd: 1,
               colEnd: 2,
-              id: 1,
+              id: 2,
               image: '',
               width: '250px',
               height: '250px',
@@ -319,7 +330,7 @@ export class AppComponent {
               colStart: 2,
               rowEnd: 2,
               colEnd: 3,
-              id: 1,
+              id: 3,
               image: '',
               width: '250px',
               height: '250px',

@@ -33,6 +33,7 @@ export class ImageBoxComponent {
         height: event.newRect.height,
         width: event.newRect.width,
         id: this.template.id,
+        tipo: index,
       });
     }
   }
