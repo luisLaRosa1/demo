@@ -1,7 +1,14 @@
-
 // app.component.ts
 import { NgClass, NgStyle } from '@angular/common';
-import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  Output,
+  ViewChild,
+} from '@angular/core';
+import { DimensionImagen } from '../custom-grid.component';
 
 @Component({
   selector: 'image-configuracion',
@@ -15,8 +22,13 @@ export class ImageComponent {
   @ViewChild('image') imageRef!: ElementRef<HTMLImageElement>;
 
   @Input() width: string = '';
-  @Input() height: string ='';
+  @Input() height: string = '';
   @Input() url: string = '';
+  @Input() top: number = 0;
+  @Input() escala: number = 1;
+  @Input() left: number = 0;
+  @Output() valorImagen = new EventEmitter<DimensionImagen>();
+  @Output() valorEscala = new EventEmitter<number>();
 
   private isDragging = false;
   private startX!: number;
@@ -24,7 +36,7 @@ export class ImageComponent {
   private startLeft!: number;
   private startTop!: number;
 
-  constructor() { }
+  constructor() {}
 
   ngAfterViewInit() {
     const container = this.containerRef.nativeElement;
@@ -36,7 +48,6 @@ export class ImageComponent {
       this.startY = e.pageY;
       this.startLeft = image.offsetLeft;
       this.startTop = image.offsetTop;
-      // Evitar selección de texto durante el arrastre
       e.preventDefault();
     });
 
@@ -52,6 +63,10 @@ export class ImageComponent {
       const top = this.startTop + deltaY;
       image.style.left = `${left}px`;
       image.style.top = `${top}px`;
+      this.valorImagen.emit({
+        left: left,
+        top: top,
+      });
     });
 
     container.addEventListener('wheel', (e) => {
@@ -61,9 +76,13 @@ export class ImageComponent {
       if (delta < 0) {
         scaleFactor = 0.9;
       }
-      const currentScale = parseFloat(image.style.transform.replace('scale(', '').replace(')', '')) || 1;
+      const currentScale =
+        parseFloat(
+          image.style.transform.replace('scale(', '').replace(')', '')
+        ) || 1;
       const newScale = currentScale * scaleFactor;
       image.style.transform = `scale(${newScale})`;
+      this.valorEscala.emit(newScale);
     });
   }
 }

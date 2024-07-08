@@ -1,21 +1,26 @@
+import { Component, EventEmitter, Inject, Input, Output } from '@angular/core';
 import {
-  Component,
-  ElementRef,
-  EventEmitter,
-  Inject,
-  Input,
-  Output,
-  ViewChild,
-} from '@angular/core';
-import {DOCUMENT, JsonPipe, NgClass, NgOptimizedImage, NgStyle} from '@angular/common';
+  DOCUMENT,
+  JsonPipe,
+  NgClass,
+  NgOptimizedImage,
+  NgStyle,
+} from '@angular/common';
 import { AngularResizeEventModule, ResizedEvent } from 'angular-resize-event';
-import {Dimension, Template} from "../custom-grid.component";
+import { Dimension, DimensionImagen, Template } from '../custom-grid.component';
 import { ImageComponent } from '../image/image.component';
 
 @Component({
   selector: 'app-image-box',
   standalone: true,
-  imports: [NgStyle, NgOptimizedImage, NgClass, AngularResizeEventModule, JsonPipe, ImageComponent],
+  imports: [
+    NgStyle,
+    NgOptimizedImage,
+    NgClass,
+    AngularResizeEventModule,
+    JsonPipe,
+    ImageComponent,
+  ],
   templateUrl: './image-box.component.html',
   styleUrl: './image-box.component.scss',
 })
@@ -30,7 +35,6 @@ export class ImageBoxComponent {
 
   constructor(@Inject(DOCUMENT) document: Document) {}
 
-
   onresized(event: ResizedEvent, activo?: boolean, index: number = 0) {
     if (event.newRect != null && activo) {
       this.valor.emit({
@@ -39,6 +43,21 @@ export class ImageBoxComponent {
         id: this.template.id,
         tipo: index,
       });
+    }
+  }
+
+  nuevovalorEscala(event: number, idx: any) {
+    var image = document.getElementById(`imagen-${idx}`);
+    if (image != null) {
+      this.template.imagePositions[idx].escala = event;
+    }
+  }
+
+  nuevavalorimagen(event: DimensionImagen, idx: any) {
+    var image = document.getElementById(`imagen-${idx}`);
+    if (image != null) {
+      this.template.imagePositions[idx].imagen.left = event.left;
+      this.template.imagePositions[idx].imagen.top = event.top;
     }
   }
 
@@ -59,7 +78,6 @@ export class ImageBoxComponent {
     }
   }
 
-
   showFileChooser(idx: number) {
     if (!this.template.imagePositions[idx].image) {
       document.getElementById(`fileInput-${idx}`)?.click();
@@ -74,9 +92,12 @@ export class ImageBoxComponent {
     }
   }
 
+  formatearmedida(valor: string) {
+    return parseFloat(valor.replace('px', ''));
+  }
+
   onDrop(event: any, idx: any) {
     event.preventDefault();
-    this.isDragable = false;
     this.cargoProceso = true;
     const imagen2 = this.template.imagePositions[idx].image;
     this.template.imagePositions[idx].image =
@@ -89,7 +110,7 @@ export class ImageBoxComponent {
   }
 
   handleDrag(event: DragEvent, index: number = 0) {
-   /* this.valor.emit({
+    /* this.valor.emit({
       height: event.clientY,
       width: Math.abs(event.clientX - 570),
       id: this.template.id,

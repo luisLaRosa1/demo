@@ -1,4 +1,6 @@
 <div class="flex justify-center items-center">
+  <button (click)="isDragable = true">drag</button>
+  <button (click)="isDragable = false">move</button>
   <div class="images-container">
     @for (image of template.imagePositions; track image.id; let idx = $index) {
     <div #host id="presente-{{idx}}" (click)="showFileChooser(idx)" (dragover)="onDragStart($event,idx)"
@@ -28,13 +30,19 @@
       </div>
       }
       @if (image.image) {
-        @if(isDragable){
-          <img [src]="image.image" class="h-full w-full object-cover" alt="">
-        }@else{
-          <image-configuracion [width]="image.width" [height]="image.height" [url]="image.image"></image-configuracion>
-        }
+      @if(isDragable){
+      <div class="container" [style.width]="(image.width)" [style.height]="(image.height)">
+        <img id="imagen-{{idx}}" [ngStyle]="{'top': image.imagen.top+'px','left': image.imagen.left+'px',
+          'transform': 'scale('+image.escala+')'
+        }" [src]="image.image" class="image" alt="">
+      </div>
+      }@else{
+      <image-configuracion id="imagen-{{idx}}" (valorEscala)="nuevovalorEscala($event,idx)" (valorImagen)="nuevavalorimagen($event,idx)" [width]="image.width"
+        [height]="image.height" [top]="image.imagen.top" [left]="image.imagen.left" [url]="image.image"
+        [escala]="image.escala"></image-configuracion>
+      }
       } @else {
-        <img ngSrc="/assets/image-placeholder.png" width="40" height="40" alt="">
+      <img ngSrc="/assets/image-placeholder.png" width="40" height="40" alt="">
       }
       <input type="file" id="fileInput-{{idx}}" [hidden]="true" (change)="onImageChange($event, idx)">
     </div>

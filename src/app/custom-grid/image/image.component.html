@@ -1,3 +1,4 @@
 <div #container class="container" [style.height]="height" [style.width]="width">
-  <img #image class="image" [src]="url" alt="Imagen" />
+  <img #image class="image" [ngStyle]="{'top': top+'px','left': left+'px','transform': 'scale('+escala+')'}" [src]="url"
+    alt="Imagen" />
 </div>

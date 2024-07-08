@@ -17,3 +17,19 @@
   resize: none;
   overflow: hidden;
 }
+
+.image {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  cursor: move;
+  transition: transform 0.3s ease;
+  position: absolute;
+}
+
+.container {
+  overflow: hidden;
+  position: relative;
+  background-color: gray;
+}

@@ -10,6 +10,16 @@ export interface Dimension {
   tipo: number;
 }
 
+export interface DimensionImagen {
+  left: number;
+  top: number;
+}
+
+export interface TemplateImagen {
+  left: number;
+  top: number;
+}
+
 export interface Template {
   id: number;
   imagePositions: {
@@ -24,6 +34,8 @@ export interface Template {
     height: string;
     minwidth: string;
     minheight: string;
+    imagen: TemplateImagen;
+    escala: number;
   }[];
 }
 
@@ -56,6 +68,11 @@ export class CustomGridComponent {
             height: '500px',
             minwidth: '50px',
             minheight: '500px',
+            imagen: {
+              left: 0,
+              top: 0,
+            },
+            escala: 1,
           },
           {
             rowStart: 1,
@@ -68,6 +85,11 @@ export class CustomGridComponent {
             height: '500px',
             minwidth: '50px',
             minheight: '500px',
+            imagen: {
+              left: 0,
+              top: 0,
+            },
+            escala: 1,
           },
         ],
       },
@@ -86,6 +108,11 @@ export class CustomGridComponent {
             height: '250px',
             minwidth: '500px',
             minheight: '50px',
+            imagen: {
+              left: 0,
+              top: 0,
+            },
+            escala: 1,
           },
           {
             rowStart: 2,
@@ -98,6 +125,11 @@ export class CustomGridComponent {
             height: '250px',
             minwidth: '500px',
             minheight: '50px',
+            imagen: {
+              left: 0,
+              top: 0,
+            },
+            escala: 1,
           },
         ],
       },
@@ -118,6 +150,11 @@ export class CustomGridComponent {
             height: '500px',
             minwidth: '50px',
             minheight: '50px',
+            imagen: {
+              left: 0,
+              top: 0,
+            },
+            escala: 1,
           },
           {
             resize: true,
@@ -131,6 +168,11 @@ export class CustomGridComponent {
             height: '250px',
             minwidth: '50px',
             minheight: '50px',
+            imagen: {
+              left: 0,
+              top: 0,
+            },
+            escala: 1,
           },
           {
             rowStart: 2,
@@ -143,6 +185,11 @@ export class CustomGridComponent {
             height: '250px',
             minwidth: '50px',
             minheight: '50px',
+            imagen: {
+              left: 0,
+              top: 0,
+            },
+            escala: 1,
           },
         ],
       },
@@ -161,6 +208,11 @@ export class CustomGridComponent {
             height: '250px',
             minwidth: '50px',
             minheight: '50px',
+            imagen: {
+              left: 0,
+              top: 0,
+            },
+            escala: 1,
           },
           {
             resize: true,
@@ -174,6 +226,11 @@ export class CustomGridComponent {
             height: '250px',
             minwidth: '50px',
             minheight: '50px',
+            imagen: {
+              left: 0,
+              top: 0,
+            },
+            escala: 1,
           },
           {
             rowStart: 2,
@@ -186,6 +243,11 @@ export class CustomGridComponent {
             height: '250px',
             minwidth: '50px',
             minheight: '50px',
+            imagen: {
+              left: 0,
+              top: 0,
+            },
+            escala: 1,
           },
         ],
       },
@@ -262,6 +324,11 @@ export class CustomGridComponent {
               height: '500px',
               minwidth: '50px',
               minheight: '500px',
+              imagen: {
+                left: 0,
+                top: 0,
+              },
+              escala: 1,
             },
             {
               rowStart: 1,
@@ -274,6 +341,11 @@ export class CustomGridComponent {
               height: '500px',
               minwidth: '50px',
               minheight: '500px',
+              imagen: {
+                left: 0,
+                top: 0,
+              },
+              escala: 1,
             },
           ],
         },
@@ -292,6 +364,11 @@ export class CustomGridComponent {
               height: '250px',
               minwidth: '500px',
               minheight: '50px',
+              imagen: {
+                left: 0,
+                top: 0,
+              },
+              escala: 1,
             },
             {
               rowStart: 2,
@@ -304,6 +381,11 @@ export class CustomGridComponent {
               height: '250px',
               minwidth: '500px',
               minheight: '50px',
+              imagen: {
+                left: 0,
+                top: 0,
+              },
+              escala: 1,
             },
           ],
         },
@@ -324,6 +406,11 @@ export class CustomGridComponent {
               height: '500px',
               minwidth: '50px',
               minheight: '50px',
+              imagen: {
+                left: 0,
+                top: 0,
+              },
+              escala: 1,
             },
             {
               resize: true,
@@ -337,6 +424,11 @@ export class CustomGridComponent {
               height: '250px',
               minwidth: '50px',
               minheight: '50px',
+              imagen: {
+                left: 0,
+                top: 0,
+              },
+              escala: 1,
             },
             {
               rowStart: 2,
@@ -349,6 +441,11 @@ export class CustomGridComponent {
               height: '250px',
               minwidth: '50px',
               minheight: '50px',
+              imagen: {
+                left: 0,
+                top: 0,
+              },
+              escala: 1,
             },
           ],
         },
@@ -367,6 +464,11 @@ export class CustomGridComponent {
               height: '250px',
               minwidth: '50px',
               minheight: '50px',
+              imagen: {
+                left: 0,
+                top: 0,
+              },
+              escala: 1,
             },
             {
               resize: true,
@@ -380,6 +482,11 @@ export class CustomGridComponent {
               height: '250px',
               minwidth: '50px',
               minheight: '50px',
+              imagen: {
+                left: 0,
+                top: 0,
+              },
+              escala: 1,
             },
             {
               rowStart: 2,
@@ -392,6 +499,11 @@ export class CustomGridComponent {
               height: '250px',
               minwidth: '50px',
               minheight: '50px',
+              imagen: {
+                left: 0,
+                top: 0,
+              },
+              escala: 1,
             },
           ],
         },
