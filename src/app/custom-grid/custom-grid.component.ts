@@ -252,6 +252,85 @@ export class CustomGridComponent {
         ],
       },
     ],
+    [
+      {
+        id: 5,
+        imagePositions: [
+          {
+            resize: true,
+            rowStart: 1,
+            colStart: 1,
+            rowEnd: 1,
+            colEnd: 1,
+            id: 1,
+            image: '',
+            width: '250px',
+            height: '250px',
+            minwidth: '50px',
+            minheight: '50px',
+            imagen: {
+              left: 0,
+              top: 0,
+            },
+            escala: 1,
+          },
+          {
+            resize: true,
+            rowStart: 1,
+            colStart: 2,
+            rowEnd: 1,
+            colEnd: 2,
+            id: 2,
+            image: '',
+            width: '250px',
+            height: '250px',
+            minwidth: '50px',
+            minheight: '50px',
+            imagen: {
+              left: 0,
+              top: 0,
+            },
+            escala: 1,
+          },
+          {
+            resize: true,
+            rowStart: 2,
+            colStart: 1,
+            rowEnd: 2,
+            colEnd: 1,
+            id: 1,
+            image: '',
+            width: '250px',
+            height: '250px',
+            minwidth: '50px',
+            minheight: '50px',
+            imagen: {
+              left: 0,
+              top: 0,
+            },
+            escala: 1,
+          },
+          {
+            resize: true,
+            rowStart: 2,
+            colStart: 2,
+            rowEnd: 2,
+            colEnd: 2,
+            id: 2,
+            image: '',
+            width: '250px',
+            height: '250px',
+            minwidth: '50px',
+            minheight: '50px',
+            imagen: {
+              left: 0,
+              top: 0,
+            },
+            escala: 1,
+          },
+        ],
+      },
+    ],
   ];
 
   nuevadimension(dimen: Dimension) {
@@ -508,12 +587,95 @@ export class CustomGridComponent {
           ],
         },
       ],
+      [
+        {
+          id: 5,
+          imagePositions: [
+            {
+              resize: true,
+              rowStart: 1,
+              colStart: 1,
+              rowEnd: 1,
+              colEnd: 1,
+              id: 1,
+              image: '',
+              width: '250px',
+              height: '250px',
+              minwidth: '50px',
+              minheight: '50px',
+              imagen: {
+                left: 0,
+                top: 0,
+              },
+              escala: 1,
+            },
+            {
+              resize: true,
+              rowStart: 1,
+              colStart: 2,
+              rowEnd: 1,
+              colEnd: 2,
+              id: 2,
+              image: '',
+              width: '250px',
+              height: '250px',
+              minwidth: '50px',
+              minheight: '50px',
+              imagen: {
+                left: 0,
+                top: 0,
+              },
+              escala: 1,
+            },
+            {
+              resize: true,
+              rowStart: 2,
+              colStart: 1,
+              rowEnd: 2,
+              colEnd: 1,
+              id: 1,
+              image: '',
+              width: '250px',
+              height: '250px',
+              minwidth: '50px',
+              minheight: '50px',
+              imagen: {
+                left: 0,
+                top: 0,
+              },
+              escala: 1,
+            },
+            {
+              resize: true,
+              rowStart: 2,
+              colStart: 2,
+              rowEnd: 2,
+              colEnd: 2,
+              id: 2,
+              image: '',
+              width: '250px',
+              height: '250px',
+              minwidth: '50px',
+              minheight: '50px',
+              imagen: {
+                left: 0,
+                top: 0,
+              },
+              escala: 1,
+            },
+          ],
+        },
+      ],
     ];
     var ind = 0;
     var templ = this.templates[ind].findIndex((p) => p.id == template.id);
     if (templ == -1) {
       ind = 1;
       templ = this.templates[ind].findIndex((p) => p.id == template.id);
+      if (templ == -1) {
+        ind = 2;
+        templ = this.templates[ind].findIndex((p) => p.id == template.id);
+      }
     }
 
     this.selectedTemplate = this.templates[ind][templ];
