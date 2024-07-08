@@ -7,14 +7,14 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { DOCUMENT, NgClass, NgOptimizedImage, NgStyle } from '@angular/common';
+import {DOCUMENT, JsonPipe, NgClass, NgOptimizedImage, NgStyle} from '@angular/common';
 import { AngularResizeEventModule, ResizedEvent } from 'angular-resize-event';
 import {Dimension, Template} from "../custom-grid.component";
 
 @Component({
   selector: 'app-image-box',
   standalone: true,
-  imports: [NgStyle, NgOptimizedImage, NgClass, AngularResizeEventModule],
+  imports: [NgStyle, NgOptimizedImage, NgClass, AngularResizeEventModule, JsonPipe],
   templateUrl: './image-box.component.html',
   styleUrl: './image-box.component.scss',
 })
@@ -27,9 +27,7 @@ export class ImageBoxComponent {
   cargoProceso: boolean = true;
   inicio: number = 0;
 
-  constructor(@Inject(DOCUMENT) document: Document) {
-    console.log(this.template)
-  }
+  constructor(@Inject(DOCUMENT) document: Document) {}
 
 
   onresized(event: ResizedEvent, activo?: boolean, index: number = 0) {
@@ -85,5 +83,13 @@ export class ImageBoxComponent {
 
   espaciado(width: string): number {
     return 250 - parseFloat(width.replace('px', ''));
+  }
+
+  handleDrag(event: DragEvent, idx: number) {
+    this.valor.emit({
+      height: event.clientY,
+      width: Math.abs(event.clientX - 500),
+      id: this.template.id,
+    });
   }
 }

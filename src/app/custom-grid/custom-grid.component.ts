@@ -194,6 +194,7 @@ export class CustomGridComponent {
   ];
 
   nuevadimension(dimen: Dimension) {
+    console.log(dimen);
     switch (dimen.id) {
       case 1:
         this.templates[0][0].imagePositions[0].width = `${dimen.width}px`;
@@ -233,7 +234,7 @@ export class CustomGridComponent {
               rowEnd: 2,
               colEnd: 2,
               id: 1,
-              image: '',
+              image: '/assets/image-1.jpeg',
               width: '250px',
               height: '500px',
               minwidth: '50px',
@@ -245,7 +246,7 @@ export class CustomGridComponent {
               rowEnd: 2,
               colEnd: 3,
               id: 2,
-              image: '',
+              image: '/assets/image-2.jpeg',
               width: '250px',
               height: '500px',
               minwidth: '50px',

@@ -2,7 +2,7 @@
   <div class="images-container">
     @for (image of template.imagePositions; track image.id; let idx = $index) {
     <div #host id="presente-{{idx}}" (click)="showFileChooser(idx)" (dragover)="onDragStart($event,idx)"
-      (drop)="onDrop($event,idx)" class="flex justify-center items-center bg-gray-200 image-container ne-resize"
+      (drop)="onDrop($event,idx)" class="flex justify-center items-center bg-gray-200 image-container ne-resize relative"
       (resized)="onresized($event,image.resize,idx)" [ngClass]="image.image ? 'cursor-grab' : 'cursor-pointer'"
       [ngStyle]="{
         'grid-column-end': image.colEnd,
@@ -10,6 +10,12 @@
         'grid-row-start': image.rowStart,
         'grid-row-end': image.rowEnd,
       }">
+      @if (idx === 0) {
+        <div (drag)="handleDrag($event, idx)" [draggable]="true" class="z-40 w-[5px] h-[40px] rounded-bl-full rounded-tl-full bg-white absolute right-0 top-[250] cursor-col-resize"></div>
+      }
+      @if (idx === 1) {
+        <div (drag)="handleDrag($event, idx)"  [draggable]="true" class="z-40 w-[5px] h-[40px] rounded-br-full rounded-tr-full bg-white absolute left-0 top-[250] cursor-col-resize"></div>
+      }
       @if (image.image) {
       <img [src]="image.image" class="h-full w-full object-cover" alt="">
       } @else {
