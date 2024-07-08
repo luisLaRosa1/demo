@@ -87,11 +87,11 @@ export class ImageBoxComponent {
   }
 
   handleDrag(event: DragEvent, index: number = 0) {
-    this.valor.emit({
+   /* this.valor.emit({
       height: event.clientY,
       width: Math.abs(event.clientX - 570),
       id: this.template.id,
       tipo: index,
-    });
+    });*/
   }
 }
