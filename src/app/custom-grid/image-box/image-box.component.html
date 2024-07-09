@@ -11,13 +11,13 @@
         'grid-column-start': image.colStart,
         'grid-row-start': image.rowStart,
         'grid-row-end': image.rowEnd,
-        'resize': image.resize && (template.id == 1 || (template.id == 3 && image.id == 1) || (template.id == 4 && image.id == 2)) ? 'horizontal' : image.resize && (template.id == 2 || (template.id == 3 && image.id == 2) || (template.id == 4 && image.id == 1)) ? 'vertical' : 'none',
+        'resize': retornarResize(template,image),
         'width' : image.width,
         'height': image.height,
         'min-width': image.minwidth,
         'min-height': image.minheight,
-        'margin-left': (!image.resize && (template.id == 1)) || (template.id == 3 && image.id != 1) || (template.id == 4 && image.id == 3) ? (espaciado(image.width)+'px') : '0px',
-        'margin-top': (!image.resize && (template.id == 2 || (template.id == 3 && image.id == 3)) || (template.id == 4 && image.id != 1)) ? (espaciado(image.height)+'px') : '0px'
+        'margin-left': retornarMargenIzquierdo(template,image),
+        'margin-top': retornarMargenArriba(template,image)
       }">
       @if (idx === 0) {
       <div (drag)="handleDrag($event, idx)" [draggable]="true"
@@ -37,8 +37,9 @@
         }" [src]="image.image" class="image" alt="">
       </div>
       }@else{
-      <image-configuracion id="imagen-{{idx}}" (valorEscala)="nuevovalorEscala($event,idx)" (valorImagen)="nuevavalorimagen($event,idx)" [width]="image.width"
-        [height]="image.height" [top]="image.imagen.top" [left]="image.imagen.left" [url]="image.image"
+      <image-configuracion id="imagen-{{idx}}" (valorEscala)="nuevovalorEscala($event,idx)"
+        (valorImagen)="nuevavalorimagen($event,idx)" [width]="image.width" [height]="image.height"
+        [top]="image.imagen.top" [left]="image.imagen.left" [url]="image.image"
         [escala]="image.escala"></image-configuracion>
       }
       } @else {

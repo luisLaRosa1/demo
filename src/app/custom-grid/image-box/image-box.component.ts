@@ -117,4 +117,34 @@ export class ImageBoxComponent {
       tipo: index,
     });*/
   }
+
+  retornarMargenArriba(template: Template, image: any): string {
+    return (!image.resize &&
+      (template.id == 2 || (template.id == 3 && image.id == 3))) ||
+      (template.id == 4 && image.id != 1)
+      ? this.espaciado(image.height) + 'px'
+      : '0px';
+  }
+
+  retornarMargenIzquierdo(template: Template, image: any): string {
+    return (!image.resize &&
+      (template.id == 2 || (template.id == 3 && image.id == 3))) ||
+      (template.id == 4 && image.id != 1)
+      ? this.espaciado(image.height) + 'px'
+      : '0px';
+  }
+
+  retornarResize(template: Template, image: any): string {
+    return image.resize &&
+      (template.id == 1 ||
+        (template.id == 3 && image.id == 1) ||
+        (template.id == 4 && image.id == 2))
+      ? 'horizontal'
+      : image.resize &&
+        (template.id == 2 ||
+          (template.id == 3 && image.id == 2) ||
+          (template.id == 4 && image.id == 1))
+      ? 'vertical'
+      : 'none';
+  }
 }
