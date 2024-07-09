@@ -3,6 +3,7 @@ import {ImageBoxComponent} from "../../custom-grid/image-box/image-box.component
 import {TemplateSelectorComponent} from "../../custom-grid/template-selector/template-selector.component";
 import {NgClass, NgOptimizedImage} from "@angular/common";
 import {TwoComponent} from "../two/two.component";
+import {ThreeComponent} from "../three/three.component";
 
 
 export interface NewTemplate {
@@ -26,6 +27,7 @@ export interface NewTemplate {
     NgClass,
     NgOptimizedImage,
     TwoComponent,
+    ThreeComponent,
   ],
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss'
@@ -84,6 +86,112 @@ export class MainComponent {
         ],
       },
     ],
+    3: [
+      {
+        id: 3,
+        imagePositions: [
+          {
+            resize: true,
+            rowStart: 1,
+            colStart: 1,
+            rowEnd: 3,
+            colEnd: 1,
+            id: 1,
+            image: ''
+          },
+          {
+            resize: true,
+            rowStart: 1,
+            colStart: 2,
+            rowEnd: 1,
+            colEnd: 2,
+            id: 2,
+            image: ''
+          },
+          {
+            rowStart: 2,
+            colStart: 2,
+            rowEnd: 2,
+            colEnd: 3,
+            id: 3,
+            image: ''
+          },
+        ],
+      },
+      {
+        id: 4,
+        imagePositions: [
+          {
+            resize: true,
+            rowStart: 1,
+            colStart: 1,
+            rowEnd: 1,
+            colEnd: 3,
+            id: 1,
+            image: ''
+          },
+          {
+            resize: true,
+            rowStart: 2,
+            colStart: 1,
+            rowEnd: 2,
+            colEnd: 2,
+            id: 2,
+            image: '',
+          },
+          {
+            rowStart: 2,
+            colStart: 2,
+            rowEnd: 2,
+            colEnd: 2,
+            id: 3,
+            image: ''
+          },
+        ],
+      },
+    ],
+    4: [
+      {
+        id: 5,
+        imagePositions: [
+          {
+            resize: true,
+            rowStart: 1,
+            colStart: 1,
+            rowEnd: 1,
+            colEnd: 1,
+            id: 1,
+            image: ''
+          },
+          {
+            resize: true,
+            rowStart: 1,
+            colStart: 2,
+            rowEnd: 1,
+            colEnd: 2,
+            id: 2,
+            image: ''
+          },
+          {
+            resize: true,
+            rowStart: 2,
+            colStart: 1,
+            rowEnd: 2,
+            colEnd: 1,
+            id: 3,
+            image: ''
+          },
+          {
+            rowStart: 2,
+            colStart: 2,
+            rowEnd: 2,
+            colEnd: 2,
+            id: 4,
+            image: ''
+          },
+        ],
+      },
+    ]
   }
 
 
