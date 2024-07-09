@@ -1,4 +1,12 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Inject, Input, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  Inject,
+  Input,
+  Output,
+} from '@angular/core';
 import {
   DOCUMENT,
   JsonPipe,
@@ -35,7 +43,10 @@ export class ImageBoxComponent {
   inicio: number = 0;
   isDragable: boolean = true;
 
-  constructor(@Inject(DOCUMENT) document: Document,private cd: ChangeDetectorRef) {}
+  constructor(
+    @Inject(DOCUMENT) document: Document,
+    private cd: ChangeDetectorRef
+  ) {}
 
   onresized(event: ResizedEvent, activo?: boolean, index: number = 0) {
     if (event.newRect != null && activo) {
@@ -111,13 +122,12 @@ export class ImageBoxComponent {
     return this.size - parseFloat(width.replace('px', ''));
   }
 
-  handleDrag(event: DragEvent, index: number = 0) {
-    /* this.valor.emit({
-      height: event.clientY,
-      width: Math.abs(event.clientX - 570),
-      id: this.template.id,
-      tipo: index,
-    });*/
+  espaciadov2(width: string): number {
+    return (150 - parseFloat(width.replace('px', '')));
+  }
+
+  espaciadov3(width: string): number {
+    return (150 - parseFloat(width.replace('px', '')));
   }
 
   retornarMargenArriba(template: Template, image: any): string {
@@ -125,7 +135,10 @@ export class ImageBoxComponent {
       (template.id == 2 || (template.id == 3 && image.id == 3))) ||
       (template.id == 4 && image.id != 1) ||
       (template.id == 5 && image.id == 3) ||
-      (template.id == 5 && image.id == 4)
+      (template.id == 5 && image.id == 4) ||
+      (template.id == 6 && image.id == 2) ||
+      (template.id == 6 && image.id == 3) ||
+      (template.id == 6 && image.id == 4)
       ? this.espaciado(image.height) + 'px'
       : '0px';
   }
@@ -137,24 +150,11 @@ export class ImageBoxComponent {
       (template.id == 5 && image.id == 2) ||
       (template.id == 5 && image.id == 4)
       ? this.espaciado(image.width) + 'px'
+      : template.id == 6 && image.id == 3
+      ? this.espaciadov2(image.width) + 'px'
+      :  template.id == 6 && image.id == 4
+      ? this.espaciadov3(image.width) + 'px'
       : '0px';
-  }
-
-  validarResize(template: Template, image: any): boolean{
-    return image.resize &&
-    (template.id == 1 ||
-      (template.id == 3 && image.id == 1) ||
-      (template.id == 4 && image.id == 2) ||
-      (template.id == 5 && image.id == 1) ||
-      (template.id == 5 && image.id == 3))
-  }
-
-  validarResizeVertical(template: Template, image: any): boolean{
-    return image.resize &&
-    (template.id == 1 ||
-      (template.id == 3 && image.id == 1) ||
-      (template.id == 4 && image.id == 2) ||
-      (template.id == 5 && image.id == 2))
   }
 
   retornarResize(template: Template, image: any): string {
@@ -163,13 +163,16 @@ export class ImageBoxComponent {
         (template.id == 3 && image.id == 1) ||
         (template.id == 4 && image.id == 2) ||
         (template.id == 5 && image.id == 1) ||
-        (template.id == 5 && image.id == 3))
+        (template.id == 5 && image.id == 3) ||
+        (template.id == 6 && image.id == 2) ||
+        (template.id == 6 && image.id == 3))
       ? 'horizontal'
       : image.resize &&
         (template.id == 2 ||
           (template.id == 3 && image.id == 2) ||
           (template.id == 4 && image.id == 1) ||
-          (template.id == 5 && image.id == 2))
+          (template.id == 5 && image.id == 2) ||
+          (template.id == 6 && image.id == 1))
       ? 'vertical'
       : 'none';
   }

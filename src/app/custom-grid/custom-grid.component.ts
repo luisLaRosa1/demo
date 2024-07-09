@@ -129,6 +129,35 @@ export class CustomGridComponent {
         }
         this.selectedTemplate = this.templates[2][0];
         break;
+      case 6:
+        if (dimen.tipo == 1) {
+          this.templates[2][1].imagePositions[0].height = `${dimen.height}px`;
+          this.templates[2][1].imagePositions[1].height = `${
+            this.size - (dimen.height - this.size)
+          }px`;
+          this.templates[2][1].imagePositions[2].height = `${
+            this.size - (dimen.height - this.size)
+          }px`;
+          this.templates[2][1].imagePositions[3].height = `${
+            this.size - (dimen.height - this.size)
+          }px`;
+        }
+        if (dimen.tipo == 2) {
+          var actual = this.size-(this.size/3);
+          var restaobtenida = dimen.width - actual;
+          restaobtenida = restaobtenida /2;
+          this.templates[2][1].imagePositions[1].width = `${dimen.width}px`;
+          this.templates[2][1].imagePositions[2].width = `${parseFloat((actual-(restaobtenida)).toFixed(2))}px`;
+          this.templates[2][1].imagePositions[3].width = `${parseFloat((actual-(restaobtenida)).toFixed(2))}px`;
+        }
+        if (dimen.tipo == 3) {
+          var actual = this.size-(this.size/3);
+          var restaobtenida = dimen.width - actual;
+          this.templates[2][1].imagePositions[2].width = `${dimen.width}px`;
+          this.templates[2][1].imagePositions[3].width = `${parseFloat((actual-(restaobtenida)).toFixed(2))}px`;
+        }
+        this.selectedTemplate = this.templates[2][1];
+        break;
     }
   }
 }
