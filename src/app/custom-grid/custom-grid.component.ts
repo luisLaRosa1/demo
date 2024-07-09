@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ImageBoxComponent } from './image-box/image-box.component';
 import { TemplateSelectorComponent } from './template-selector/template-selector.component';
 import { NgClass } from '@angular/common';
@@ -47,6 +47,7 @@ export interface Template {
   styleUrl: './custom-grid.component.scss',
 })
 export class CustomGridComponent {
+  @Input() size: number = 150;
   selectedLayout!: number;
   selectedTemplate: any;
 
@@ -64,10 +65,10 @@ export class CustomGridComponent {
             colEnd: 2,
             id: 1,
             image: '',
-            width: '250px',
-            height: '500px',
+            width: `${this.size}px`,
+            height: `${2*this.size}px`,
             minwidth: '50px',
-            minheight: '500px',
+            minheight: `${2*this.size}px`,
             imagen: {
               left: 0,
               top: 0,
@@ -81,10 +82,10 @@ export class CustomGridComponent {
             colEnd: 3,
             id: 2,
             image: '',
-            width: '250px',
-            height: '500px',
+            width: `${this.size}px`,
+            height: `${2*this.size}px`,
             minwidth: '50px',
-            minheight: '500px',
+            minheight: `${2*this.size}px`,
             imagen: {
               left: 0,
               top: 0,
@@ -104,9 +105,9 @@ export class CustomGridComponent {
             colEnd: 2,
             id: 1,
             image: '',
-            width: '500px',
-            height: '250px',
-            minwidth: '500px',
+            width: `${2*this.size}px`,
+            height: `${this.size}px`,
+            minwidth: `${2*this.size}px`,
             minheight: '50px',
             imagen: {
               left: 0,
@@ -121,9 +122,9 @@ export class CustomGridComponent {
             colEnd: 2,
             id: 2,
             image: '',
-            width: '500px',
-            height: '250px',
-            minwidth: '500px',
+            width: `${2*this.size}px`,
+            height: `${this.size}px`,
+            minwidth: `${2*this.size}px`,
             minheight: '50px',
             imagen: {
               left: 0,
@@ -146,8 +147,8 @@ export class CustomGridComponent {
             colEnd: 1,
             id: 1,
             image: '',
-            width: '250px',
-            height: '500px',
+            width: `${this.size}px`,
+            height: `${2*this.size}px`,
             minwidth: '50px',
             minheight: '50px',
             imagen: {
@@ -164,8 +165,8 @@ export class CustomGridComponent {
             colEnd: 2,
             id: 2,
             image: '',
-            width: '250px',
-            height: '250px',
+            width: `${this.size}px`,
+            height: `${this.size}px`,
             minwidth: '50px',
             minheight: '50px',
             imagen: {
@@ -181,8 +182,8 @@ export class CustomGridComponent {
             colEnd: 3,
             id: 3,
             image: '',
-            width: '250px',
-            height: '250px',
+            width: `${this.size}px`,
+            height: `${this.size}px`,
             minwidth: '50px',
             minheight: '50px',
             imagen: {
@@ -204,8 +205,8 @@ export class CustomGridComponent {
             colEnd: 3,
             id: 1,
             image: '',
-            width: '500px',
-            height: '250px',
+            width: `${2*this.size}px`,
+            height: `${this.size}px`,
             minwidth: '50px',
             minheight: '50px',
             imagen: {
@@ -222,8 +223,8 @@ export class CustomGridComponent {
             colEnd: 2,
             id: 2,
             image: '',
-            width: '250px',
-            height: '250px',
+            width: `${this.size}px`,
+            height: `${this.size}px`,
             minwidth: '50px',
             minheight: '50px',
             imagen: {
@@ -239,8 +240,8 @@ export class CustomGridComponent {
             colEnd: 2,
             id: 3,
             image: '',
-            width: '250px',
-            height: '250px',
+            width: `${this.size}px`,
+            height: `${this.size}px`,
             minwidth: '50px',
             minheight: '50px',
             imagen: {
@@ -264,8 +265,8 @@ export class CustomGridComponent {
             colEnd: 1,
             id: 1,
             image: '',
-            width: '250px',
-            height: '250px',
+            width: `${this.size}px`,
+            height: `${this.size}px`,
             minwidth: '50px',
             minheight: '50px',
             imagen: {
@@ -282,8 +283,8 @@ export class CustomGridComponent {
             colEnd: 2,
             id: 2,
             image: '',
-            width: '250px',
-            height: '250px',
+            width: `${this.size}px`,
+            height: `${this.size}px`,
             minwidth: '50px',
             minheight: '50px',
             imagen: {
@@ -300,8 +301,8 @@ export class CustomGridComponent {
             colEnd: 1,
             id: 3,
             image: '',
-            width: '250px',
-            height: '250px',
+            width: `${this.size}px`,
+            height: `${this.size}px`,
             minwidth: '50px',
             minheight: '50px',
             imagen: {
@@ -317,8 +318,8 @@ export class CustomGridComponent {
             colEnd: 2,
             id: 4,
             image: '',
-            width: '250px',
-            height: '250px',
+            width: `${this.size}px`,
+            height: `${this.size}px`,
             minwidth: '50px',
             minheight: '50px',
             imagen: {
@@ -337,29 +338,29 @@ export class CustomGridComponent {
       case 1:
         this.templates[0][0].imagePositions[0].width = `${dimen.width}px`;
         this.templates[0][0].imagePositions[1].width = `${
-          250 - (dimen.width - 250)
+          this.size - (dimen.width - this.size)
         }px`;
         break;
       case 2:
         this.templates[0][1].imagePositions[0].height = `${dimen.height}px`;
         this.templates[0][1].imagePositions[1].height = `${
-          250 - (dimen.height - 250)
+          this.size - (dimen.height - this.size)
         }px`;
         break;
       case 3:
         if (dimen.tipo == 1) {
           this.templates[1][0].imagePositions[0].width = `${dimen.width}px`;
           this.templates[1][0].imagePositions[1].width = `${
-            250 - (dimen.width - 250)
+            this.size - (dimen.width - this.size)
           }px`;
           this.templates[1][0].imagePositions[2].width = `${
-            250 - (dimen.width - 250)
+            this.size - (dimen.width - this.size)
           }px`;
         }
         if (dimen.tipo == 2) {
           this.templates[1][0].imagePositions[1].height = `${dimen.height}px`;
           this.templates[1][0].imagePositions[2].height = `${
-            250 - (dimen.height - 250)
+            this.size - (dimen.height - this.size)
           }px`;
         }
         break;
@@ -367,16 +368,16 @@ export class CustomGridComponent {
         if (dimen.tipo == 1) {
           this.templates[1][1].imagePositions[0].height = `${dimen.height}px`;
           this.templates[1][1].imagePositions[1].height = `${
-            250 - (dimen.height - 250)
+            this.size - (dimen.height - this.size)
           }px`;
           this.templates[1][1].imagePositions[2].height = `${
-            250 - (dimen.height - 250)
+            this.size - (dimen.height - this.size)
           }px`;
         }
         if (dimen.tipo == 2) {
           this.templates[1][1].imagePositions[1].width = `${dimen.width}px`;
           this.templates[1][1].imagePositions[2].width = `${
-            250 - (dimen.width - 250)
+            this.size - (dimen.width - this.size)
           }px`;
         }
         break;
@@ -384,23 +385,23 @@ export class CustomGridComponent {
         if (dimen.tipo == 1) {
           this.templates[2][0].imagePositions[0].width = `${dimen.width}px`;
           this.templates[2][0].imagePositions[1].width = `${
-            250 - (dimen.width - 250)
+            this.size - (dimen.width - this.size)
           }px`;
         }
         if (dimen.tipo == 3) {
           this.templates[2][0].imagePositions[2].width = `${dimen.width}px`;
           this.templates[2][0].imagePositions[3].width = `${
-            250 - (dimen.width - 250)
+            this.size - (dimen.width - this.size)
           }px`;
         }
         if (dimen.tipo == 2) {
           this.templates[2][0].imagePositions[0].height = `${dimen.height}px`;
           this.templates[2][0].imagePositions[1].height = `${dimen.height}px`;
           this.templates[2][0].imagePositions[2].height = `${
-            250 - (dimen.height - 250)
+            this.size - (dimen.height - this.size)
           }px`;
           this.templates[2][0].imagePositions[3].height = `${
-            250 - (dimen.height - 250)
+            this.size - (dimen.height - this.size)
           }px`;
         }
         break;
@@ -422,10 +423,10 @@ export class CustomGridComponent {
               colEnd: 2,
               id: 1,
               image: '',
-              width: '250px',
-              height: '500px',
+              width: `${this.size}px`,
+              height: `${2*this.size}px`,
               minwidth: '50px',
-              minheight: '500px',
+              minheight: `${2*this.size}px`,
               imagen: {
                 left: 0,
                 top: 0,
@@ -439,10 +440,10 @@ export class CustomGridComponent {
               colEnd: 3,
               id: 2,
               image: '',
-              width: '250px',
-              height: '500px',
+              width: `${this.size}px`,
+              height: `${2*this.size}px`,
               minwidth: '50px',
-              minheight: '500px',
+              minheight: `${2*this.size}px`,
               imagen: {
                 left: 0,
                 top: 0,
@@ -462,9 +463,9 @@ export class CustomGridComponent {
               colEnd: 2,
               id: 1,
               image: '',
-              width: '500px',
-              height: '250px',
-              minwidth: '500px',
+              width: `${2*this.size}px`,
+              height: `${this.size}px`,
+              minwidth: `${2*this.size}px`,
               minheight: '50px',
               imagen: {
                 left: 0,
@@ -479,9 +480,9 @@ export class CustomGridComponent {
               colEnd: 2,
               id: 2,
               image: '',
-              width: '500px',
-              height: '250px',
-              minwidth: '500px',
+              width: `${2*this.size}px`,
+              height: `${this.size}px`,
+              minwidth: `${2*this.size}px`,
               minheight: '50px',
               imagen: {
                 left: 0,
@@ -504,8 +505,8 @@ export class CustomGridComponent {
               colEnd: 1,
               id: 1,
               image: '',
-              width: '250px',
-              height: '500px',
+              width: `${this.size}px`,
+              height: `${2*this.size}px`,
               minwidth: '50px',
               minheight: '50px',
               imagen: {
@@ -522,8 +523,8 @@ export class CustomGridComponent {
               colEnd: 2,
               id: 2,
               image: '',
-              width: '250px',
-              height: '250px',
+              width: `${this.size}px`,
+              height: `${this.size}px`,
               minwidth: '50px',
               minheight: '50px',
               imagen: {
@@ -539,8 +540,8 @@ export class CustomGridComponent {
               colEnd: 3,
               id: 3,
               image: '',
-              width: '250px',
-              height: '250px',
+              width: `${this.size}px`,
+              height: `${this.size}px`,
               minwidth: '50px',
               minheight: '50px',
               imagen: {
@@ -562,8 +563,8 @@ export class CustomGridComponent {
               colEnd: 3,
               id: 1,
               image: '',
-              width: '500px',
-              height: '250px',
+              width: `${2*this.size}px`,
+              height: `${this.size}px`,
               minwidth: '50px',
               minheight: '50px',
               imagen: {
@@ -580,8 +581,8 @@ export class CustomGridComponent {
               colEnd: 2,
               id: 2,
               image: '',
-              width: '250px',
-              height: '250px',
+              width: `${this.size}px`,
+              height: `${this.size}px`,
               minwidth: '50px',
               minheight: '50px',
               imagen: {
@@ -597,8 +598,8 @@ export class CustomGridComponent {
               colEnd: 2,
               id: 3,
               image: '',
-              width: '250px',
-              height: '250px',
+              width: `${this.size}px`,
+              height: `${this.size}px`,
               minwidth: '50px',
               minheight: '50px',
               imagen: {
@@ -622,8 +623,8 @@ export class CustomGridComponent {
               colEnd: 1,
               id: 1,
               image: '',
-              width: '250px',
-              height: '250px',
+              width: `${this.size}px`,
+              height: `${this.size}px`,
               minwidth: '50px',
               minheight: '50px',
               imagen: {
@@ -640,8 +641,8 @@ export class CustomGridComponent {
               colEnd: 2,
               id: 2,
               image: '',
-              width: '250px',
-              height: '250px',
+              width: `${this.size}px`,
+              height: `${this.size}px`,
               minwidth: '50px',
               minheight: '50px',
               imagen: {
@@ -658,8 +659,8 @@ export class CustomGridComponent {
               colEnd: 1,
               id: 3,
               image: '',
-              width: '250px',
-              height: '250px',
+              width: `${this.size}px`,
+              height: `${this.size}px`,
               minwidth: '50px',
               minheight: '50px',
               imagen: {
@@ -676,8 +677,8 @@ export class CustomGridComponent {
               colEnd: 2,
               id: 4,
               image: '',
-              width: '250px',
-              height: '250px',
+              width: `${this.size}px`,
+              height: `${this.size}px`,
               minwidth: '50px',
               minheight: '50px',
               imagen: {

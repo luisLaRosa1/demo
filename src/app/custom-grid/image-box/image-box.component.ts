@@ -25,6 +25,7 @@ import { ImageComponent } from '../image/image.component';
   styleUrl: './image-box.component.scss',
 })
 export class ImageBoxComponent {
+  @Input() size!: number;
   @Input() template!: Template;
   @Input() templateIdx!: number;
   @Output() valor = new EventEmitter<Dimension>();
@@ -106,7 +107,7 @@ export class ImageBoxComponent {
   }
 
   espaciado(width: string): number {
-    return 250 - parseFloat(width.replace('px', ''));
+    return this.size - parseFloat(width.replace('px', ''));
   }
 
   handleDrag(event: DragEvent, index: number = 0) {

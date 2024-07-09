@@ -3,13 +3,9 @@
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   grid-template-rows: repeat(auto-fit, minmax(100px, 1fr));
   overflow: hidden;
-  width: 500px;
-  height: 500px;
 }
 
-.image-container{
-  max-height: 500px;
-  max-width: 500px;
+.image-container {
   overflow: hidden;
 }
 

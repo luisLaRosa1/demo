@@ -1,4 +1,4 @@
-<div class="grid grid-cols-12 gap-5 mt-5 min-h-[500px]">
+<div class="grid grid-cols-12 gap-5 mt-5 min-h-[300px]">
   <div class="col-span-4 border-2 border-gray-100 p-4 rounded-sm">
     <div class="flex justify-between">
       @for (layout of layouts; track layout) {
@@ -19,7 +19,7 @@
   </div>
   <div class="col-span-8">
     @if (selectedTemplate) {
-      <app-image-box [template]="selectedTemplate" (valor)="nuevadimension($event)"></app-image-box>
+      <app-image-box [size]="size" [template]="selectedTemplate" (valor)="nuevadimension($event)"></app-image-box>
     }
   </div>
 </div>
