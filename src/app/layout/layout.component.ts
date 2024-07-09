@@ -14,7 +14,8 @@ export class LayoutComponent {
   imagesInput: string[] = [
     'https://2.bp.blogspot.com/-gjOEnFz1tCE/U97Oe_XzaFI/AAAAAAACQ1A/vwNDLPhU2UM/s1600/paisajes+naturales+de+bosques+y+%C3%A1rboles+verdes+(10).jpg',
     'https://1.bp.blogspot.com/-dm4acG73ZWk/VDQmRt-O9nI/AAAAAAACU9A/AwOrCZFeiTc/s1600/los%2Bmejores%2Bpaisajes%2Bdel%2Bmundo%2By%2Bnaturaleza%2Bcon%2Bcascadas%2C%2Bmonta%C3%B1as%2C%2Bpastizales%2By%2Boto%C3%B1o%2B(5).jpg',
-    'https://4.bp.blogspot.com/-s5nlQK14mDc/UtL0TEeJ9RI/AAAAAAAAY2U/LYDmcixgR1M/s1600/187959.jpg'
+    //'https://4.bp.blogspot.com/-s5nlQK14mDc/UtL0TEeJ9RI/AAAAAAAAY2U/LYDmcixgR1M/s1600/187959.jpg',
+    //'https://i.pinimg.com/originals/a9/5e/ad/a95eadf8fb72efed6eff3a2cd9c97372.jpg'
   ];
   selectedTemplate: any;
 
