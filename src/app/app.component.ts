@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NgClass } from '@angular/common';
-import { TemplateSelectorComponent } from './custom-grid/template-selector/template-selector.component';
 import { ImageBoxComponent } from './custom-grid/image-box/image-box.component';
 import { ImageComponent } from './custom-grid/image/image.component';
+import { TemplateSelectorComponent } from './template-selector/template-selector.component';
+import { LayoutComponent } from './layout/layout.component';
 
 
 @Component({
@@ -14,6 +15,7 @@ import { ImageComponent } from './custom-grid/image/image.component';
     TemplateSelectorComponent,
     ImageBoxComponent,
     ImageComponent,
+    LayoutComponent,
     NgClass,
   ],
   templateUrl: './app.component.html',

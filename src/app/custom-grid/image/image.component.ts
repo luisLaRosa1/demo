@@ -8,7 +8,7 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { DimensionImagen } from '../custom-grid.component';
+import { DimensionImagen } from '../../layout/layout.component';
 
 @Component({
   selector: 'image-configuracion',

@@ -1,25 +1,3 @@
-<div class="grid grid-cols-12 gap-5 mt-5 min-h-[300px]">
-  <div class="col-span-4 border-2 border-gray-100 p-4 rounded-sm">
-    <div class="flex justify-between">
-      @for (layout of layouts; track layout) {
-        <span
-          (click)="selectedLayout = layout"
-          class="py-1 px-6 bg-gray-100 hover:bg-gray-300 transition-all ease-in-out rounded-full cursor-pointer"
-          [ngClass]="{'bg-gray-300': layout === selectedLayout}"
-        >{{ layout }}</span>
-      }
-    </div>
-    @if (selectedLayout) {
-      <div class="mt-5 flex gap-5">
-        @for (template of templates[selectedLayout - 2]; track template.id) {
-          <app-template-selector (click)="regresarFuncionInicial(template)" [template]="template"></app-template-selector>
-        }
-      </div>
-    }
-  </div>
-  <div class="col-span-8">
-    @if (selectedTemplate) {
-      <app-image-box [size]="size" [template]="selectedTemplate" (valor)="nuevadimension($event)"></app-image-box>
-    }
-  </div>
-</div>
+@if (selectedTemplate) {
+  <app-image-box [size]="size" [template]="selectedTemplate" (valor)="nuevadimension($event)"></app-image-box>
+}
