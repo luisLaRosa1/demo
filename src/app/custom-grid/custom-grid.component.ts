@@ -143,18 +143,11 @@ export class CustomGridComponent {
           }px`;
         }
         if (dimen.tipo == 2) {
-          var actual = this.size-(this.size/3);
-          var restaobtenida = dimen.width - actual;
-          restaobtenida = restaobtenida /2;
+          var resta: number = this.size - this.size / 3;
           this.templates[2][1].imagePositions[1].width = `${dimen.width}px`;
-          this.templates[2][1].imagePositions[2].width = `${parseFloat((actual-(restaobtenida)).toFixed(2))}px`;
-          this.templates[2][1].imagePositions[3].width = `${parseFloat((actual-(restaobtenida)).toFixed(2))}px`;
-        }
-        if (dimen.tipo == 3) {
-          var actual = this.size-(this.size/3);
-          var restaobtenida = dimen.width - actual;
-          this.templates[2][1].imagePositions[2].width = `${dimen.width}px`;
-          this.templates[2][1].imagePositions[3].width = `${parseFloat((actual-(restaobtenida)).toFixed(2))}px`;
+          this.templates[2][1].imagePositions[2].width = `${
+            resta - (dimen.width - resta)
+          }px`;
         }
         this.selectedTemplate = this.templates[2][1];
         break;

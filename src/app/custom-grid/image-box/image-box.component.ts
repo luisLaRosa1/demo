@@ -123,11 +123,11 @@ export class ImageBoxComponent {
   }
 
   espaciadov2(width: string): number {
-    return (150 - parseFloat(width.replace('px', '')));
+    return (this.size-(this.size/3) - parseFloat(width.replace('px', '')));
   }
 
   espaciadov3(width: string): number {
-    return (150 - parseFloat(width.replace('px', '')));
+    return (this.size-(this.size/3) - parseFloat(width.replace('px', '')));
   }
 
   retornarMargenArriba(template: Template, image: any): string {
