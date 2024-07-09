@@ -3,7 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { NgClass } from '@angular/common';
 import { ImageBoxComponent } from './custom-grid/image-box/image-box.component';
 import { ImageComponent } from './custom-grid/image/image.component';
-import { TemplateSelectorComponent } from './template-selector/template-selector.component';
+import { TemplateSelectorComponent } from './custom-grid/template-selector/template-selector.component';
 import { LayoutComponent } from './layout/layout.component';
 
 

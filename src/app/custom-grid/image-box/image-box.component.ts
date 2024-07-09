@@ -8,7 +8,7 @@ import {
 } from '@angular/common';
 import { AngularResizeEventModule, ResizedEvent } from 'angular-resize-event';
 import { ImageComponent } from '../image/image.component';
-import { Dimension, DimensionImagen, Template } from '../../layout/layout.component';
+import { Template, Dimension, DimensionImagen } from '../custom-grid.component';
 
 @Component({
   selector: 'app-image-box',
