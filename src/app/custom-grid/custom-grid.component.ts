@@ -130,6 +130,5 @@ export class CustomGridComponent {
         this.selectedTemplate = this.templates[2][0];
         break;
     }
-    console.log(this.selectedTemplate)
   }
 }

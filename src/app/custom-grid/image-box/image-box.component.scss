@@ -26,17 +26,18 @@
 .container {
   overflow: hidden;
   position: relative;
-  background-color: #C0C0C0;;
+  background-color: gray;
 }
 
-.resize {
-  position: relative;
-  resize: horizontal;
-  background-color: transparent;
-  overflow-x: overlay;
-  z-index: 1; /* this makes the content clickable */
-}
-
-.resize-giro {
-  transform: rotate(90deg);
+::-webkit-resizer {
+  content: "";
+  background-image: url("/assets/th.png");
+  background-size: 16px;
+  background-repeat: no-repeat;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  bottom: 2px;
+  right: 0;
+  pointer-events: none;
 }

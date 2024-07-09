@@ -15,6 +15,7 @@
     @for (image of template.imagePositions; track image.id; let idx = $index) {
     <div #host id="presente-{{idx}}" (click)="showFileChooser(idx)" (dragover)="onDragStart($event,idx)"
       (drop)="onDrop($event,idx)" class="flex justify-center items-center bg-gray-200 image-container ne-resize"
+      (resized)="onresized($event,image.resize,image.id)"
       [ngClass]="image.image ? isDragable ? 'cursor-grab' : 'cursor-move' : 'cursor-pointer'" [ngStyle]="{
         'max-height': 2*size+'px',
         'max-width': 2*size+'px',
@@ -22,51 +23,21 @@
         'grid-column-start': image.colStart,
         'grid-row-start': image.rowStart,
         'grid-row-end': image.rowEnd,
+        'resize': retornarResize(template,image),
         'width' : image.width,
         'height': image.height,
         'min-width': image.minwidth,
         'min-height': image.minheight,
         'margin-left': retornarMargenIzquierdo(template,image),
-        'margin-top': retornarMargenArriba(template,image)
+        'margin-top': retornarMargenArriba(template,image),
       }">
       @if (image.image) {
       @if(isDragable){
-      <div class="container" [style.width]="(image.width)" [style.height]="(image.height)">
-        @if (validarResize(template,image)) {
-          <div class="resize-parent" [ngStyle]="{'width': image.width,'height': image.height}">
-            <div class="resize-content">
-              <img id="imagen-{{idx}}"
-                [ngStyle]="{'top': image.imagen.top+'px','left': image.imagen.left+'px','transform': 'scale('+image.escala+')'}"
-                [src]="image.image" class="image" alt="">
-            </div>
-            <div>
-              <div class="resize" [style.width]="(image.width)" [style.height]="(image.height)"
-                (resized)="onresized($event,image.resize,image.id)">
-              </div>
-            </div>
-          </div>
-        }@else{
-          @if (validarResizeVertical(template,image)) {
-            <div class="resize-parent" [ngStyle]="{'width': image.width,'height': image.height}">
-              <div class="resize-content">
-                <img id="imagen-{{idx}}"
-                  [ngStyle]="{'top': image.imagen.top+'px','left': image.imagen.left+'px','transform': 'scale('+image.escala+')'}"
-                  [src]="image.image" class="image" alt="">
-              </div>
-              <div>
-                <div class="resize resize-giro" [style.width]="(image.width)" [style.height]="(image.height)"
-                  (resized)="onresizedVertical($event,image.resize,image.id)">
-                </div>
-              </div>
-            </div>
-          }
-          @else{
-            <img id="imagen-{{idx}}"
-              [ngStyle]="{'top': image.imagen.top+'px','left': image.imagen.left+'px','transform': 'scale('+image.escala+')'}"
-              [src]="image.image" class="image" alt="">
-          }
-        }
-      </div>
+        <div class="container" [style.width]="(image.width)" [style.height]="(image.height)">
+          <img id="imagen-{{idx}}"
+          [ngStyle]="{'top': image.imagen.top+'px','left': image.imagen.left+'px','transform': 'scale('+image.escala+')'}"
+          [src]="image.image" class="image" alt="">
+        </div>
       }@else{
       <image-configuracion id="imagen-{{idx}}" (valorEscala)="nuevovalorEscala($event,idx)"
         (valorImagen)="nuevavalorimagen($event,idx)" [width]="image.width" [height]="image.height"

@@ -38,26 +38,10 @@ export class ImageBoxComponent {
   constructor(@Inject(DOCUMENT) document: Document,private cd: ChangeDetectorRef) {}
 
   onresized(event: ResizedEvent, activo?: boolean, index: number = 0) {
-    console.log("hola")
     if (event.newRect != null && activo) {
       this.valor.emit({
-        height: 225 - event.newRect.height,
-        width: event.newRect.width + 10,
-        id: this.template.id,
-        tipo: index,
-      });
-    }
-  }
-
-
-  onresizedVertical(event: ResizedEvent, activo?: boolean, index: number = 0) {
-    console.log(activo)
-    console.log(index)
-    console.log(event)
-    if (event.newRect != null && activo) {
-      this.valor.emit({
-        height: event.newRect.width + 10,
-        width: 250 - event.newRect.height,
+        height: event.newRect.height,
+        width: event.newRect.width,
         id: this.template.id,
         tipo: index,
       });
