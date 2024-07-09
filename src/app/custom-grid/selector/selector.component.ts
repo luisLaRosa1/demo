@@ -590,7 +590,6 @@ export class SelectorComponent {
         templ = this.templates[ind].findIndex((p) => p.id == template.id);
       }
     }
-
-    this.selectedTemplate.emit(this.templates[ind][templ]);
+    this.selectedTemplate.emit({elegido: this.templates[ind][templ],total:this.templates});
   }
 }

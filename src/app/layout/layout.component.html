@@ -8,6 +8,8 @@
     }
   </div>
   <div class="col-span-8">
-    <app-custom-grid [selectedTemplate]="selectedTemplate" [imagesInput]="imagesInput" [size]="225"></app-custom-grid>
+    @if (imagesInput.length) {
+      <app-custom-grid [selectedTemplate]="selectedTemplate?.elegido" [templates]="selectedTemplate?.total" [imagesInput]="imagesInput" [size]="225"></app-custom-grid>
+    }
   </div>
 </div>
