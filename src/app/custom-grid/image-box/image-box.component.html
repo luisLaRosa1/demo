@@ -1,6 +1,14 @@
+<div class="flex justify-center gap-3 mb-3">
+  <button class="flex items-center gap-3 border-2 border-gray-200 rounded-lg py-1 px-3" [ngClass]="{'border-gray-500': isDragable}" (click)="isDragable = true">
+    <img ngSrc="/assets/drag-icon.png" width="20" height="20" alt="">
+    <span class="text-lg">Drag</span>
+  </button>
+  <button class="flex items-center gap-3 border-2 border-gray-200 rounded-lg py-1 px-3" [ngClass]="{'border-gray-500': !isDragable}" (click)="isDragable = false">
+    <img ngSrc="/assets/move-icon.png" width="20" height="20" alt="">
+    <span class="text-lg">move</span>
+  </button>
+</div>
 <div class="flex justify-center items-center">
-  <button (click)="isDragable = true">drag</button>
-  <button (click)="isDragable = false">move</button>
   <div class="images-container">
     @for (image of template.imagePositions; track image.id; let idx = $index) {
     <div #host id="presente-{{idx}}" (click)="showFileChooser(idx)" (dragover)="onDragStart($event,idx)"
