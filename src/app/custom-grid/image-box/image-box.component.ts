@@ -121,16 +121,20 @@ export class ImageBoxComponent {
   retornarMargenArriba(template: Template, image: any): string {
     return (!image.resize &&
       (template.id == 2 || (template.id == 3 && image.id == 3))) ||
-      (template.id == 4 && image.id != 1)
+      (template.id == 4 && image.id != 1) ||
+      (template.id == 5 && image.id == 3) ||
+      (template.id == 5 && image.id == 4)
       ? this.espaciado(image.height) + 'px'
       : '0px';
   }
 
   retornarMargenIzquierdo(template: Template, image: any): string {
-    return (!image.resize &&
-      (template.id == 2 || (template.id == 3 && image.id == 3))) ||
-      (template.id == 4 && image.id != 1)
-      ? this.espaciado(image.height) + 'px'
+    return (!image.resize && template.id == 1) ||
+      (template.id == 3 && image.id != 1) ||
+      (template.id == 4 && image.id == 3) ||
+      (template.id == 5 && image.id == 2) ||
+      (template.id == 5 && image.id == 4)
+      ? this.espaciado(image.width) + 'px'
       : '0px';
   }
 
@@ -138,12 +142,15 @@ export class ImageBoxComponent {
     return image.resize &&
       (template.id == 1 ||
         (template.id == 3 && image.id == 1) ||
-        (template.id == 4 && image.id == 2))
+        (template.id == 4 && image.id == 2) ||
+        (template.id == 5 && image.id == 1) ||
+        (template.id == 5 && image.id == 3))
       ? 'horizontal'
       : image.resize &&
         (template.id == 2 ||
           (template.id == 3 && image.id == 2) ||
-          (template.id == 4 && image.id == 1))
+          (template.id == 4 && image.id == 1) ||
+          (template.id == 5 && image.id == 2))
       ? 'vertical'
       : 'none';
   }

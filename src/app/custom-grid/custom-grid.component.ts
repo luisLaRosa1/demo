@@ -298,7 +298,7 @@ export class CustomGridComponent {
             colStart: 1,
             rowEnd: 2,
             colEnd: 1,
-            id: 1,
+            id: 3,
             image: '',
             width: '250px',
             height: '250px',
@@ -311,12 +311,11 @@ export class CustomGridComponent {
             escala: 1,
           },
           {
-            resize: true,
             rowStart: 2,
             colStart: 2,
             rowEnd: 2,
             colEnd: 2,
-            id: 2,
+            id: 4,
             image: '',
             width: '250px',
             height: '250px',
@@ -378,6 +377,30 @@ export class CustomGridComponent {
           this.templates[1][1].imagePositions[1].width = `${dimen.width}px`;
           this.templates[1][1].imagePositions[2].width = `${
             250 - (dimen.width - 250)
+          }px`;
+        }
+        break;
+      case 5:
+        if (dimen.tipo == 1) {
+          this.templates[2][0].imagePositions[0].width = `${dimen.width}px`;
+          this.templates[2][0].imagePositions[1].width = `${
+            250 - (dimen.width - 250)
+          }px`;
+        }
+        if (dimen.tipo == 3) {
+          this.templates[2][0].imagePositions[2].width = `${dimen.width}px`;
+          this.templates[2][0].imagePositions[3].width = `${
+            250 - (dimen.width - 250)
+          }px`;
+        }
+        if (dimen.tipo == 2) {
+          this.templates[2][0].imagePositions[0].height = `${dimen.height}px`;
+          this.templates[2][0].imagePositions[1].height = `${dimen.height}px`;
+          this.templates[2][0].imagePositions[2].height = `${
+            250 - (dimen.height - 250)
+          }px`;
+          this.templates[2][0].imagePositions[3].height = `${
+            250 - (dimen.height - 250)
           }px`;
         }
         break;
@@ -633,7 +656,7 @@ export class CustomGridComponent {
               colStart: 1,
               rowEnd: 2,
               colEnd: 1,
-              id: 1,
+              id: 3,
               image: '',
               width: '250px',
               height: '250px',
@@ -651,7 +674,7 @@ export class CustomGridComponent {
               colStart: 2,
               rowEnd: 2,
               colEnd: 2,
-              id: 2,
+              id: 4,
               image: '',
               width: '250px',
               height: '250px',
