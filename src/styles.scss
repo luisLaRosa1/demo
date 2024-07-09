@@ -2,3 +2,66 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* an invisible scroll bar covers the content if you dont use a parent.
+you can omit the parent if your content is not interactive.
+using a parent allows the content to be clickable and also avoids scrolling the content
+is better overall but more complicated
+*/
+.resize-parent {
+  position: relative;
+  display: inline-block;
+  overflow: clip;
+}
+
+.resize {
+  width: 225px;
+  height: 225px;
+  position: relative;
+  resize: horizontal;
+  overflow-x: overlay;
+  z-index: 0; /* this makes the content clickable */
+}
+
+
+/* this is necesary to make the scrollbars appear */
+.resize::before {
+  content: "";
+  width: 105%;
+  height: 105%;
+  background: transparent;
+  pointer-events: none;
+  display: block;
+  position: absolute;
+}
+
+/* not necesarry if not using a parent */
+.resize-content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  box-sizing: border-box;
+}
+
+
+/* the scrollbar controls the size of the resizer */
+.resize::-webkit-scrollbar {
+  height: 225px; /*at least the same as .resize */
+  width: 10px; /* as desired */
+}
+
+.resize::-webkit-resizer {
+  background: cadetblue;
+}
+
+/* this is behind of the resizer and can be used to style it */
+.resize::-webkit-scrollbar-corner {
+}
+
+/* used to figure out how this works */
+.resize::-webkit-scrollbar:horizontal {}
+.resize::-webkit-scrollbar-button {}
+.resize::-webkit-scrollbar-track {}
+.resize::-webkit-scrollbar-track-piece {}
+.resize::-webkit-scrollbar-thumb {}

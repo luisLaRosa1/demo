@@ -51,6 +51,7 @@ export class CustomGridComponent {
   @Input() templates: any;
 
   nuevadimension(dimen: Dimension) {
+    this.selectedTemplate = null;
     switch (dimen.id) {
       case 1:
         this.templates[0][0].imagePositions[0].width = `${dimen.width}px`;

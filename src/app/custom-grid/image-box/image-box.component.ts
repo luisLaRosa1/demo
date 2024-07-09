@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Inject, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Inject, Input, Output } from '@angular/core';
 import {
   DOCUMENT,
   JsonPipe,
@@ -13,6 +13,7 @@ import { Template, Dimension, DimensionImagen } from '../custom-grid.component';
 @Component({
   selector: 'app-image-box',
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     NgStyle,
     NgOptimizedImage,
@@ -34,13 +35,29 @@ export class ImageBoxComponent {
   inicio: number = 0;
   isDragable: boolean = true;
 
-  constructor(@Inject(DOCUMENT) document: Document) {}
+  constructor(@Inject(DOCUMENT) document: Document,private cd: ChangeDetectorRef) {}
 
   onresized(event: ResizedEvent, activo?: boolean, index: number = 0) {
+    console.log("hola")
     if (event.newRect != null && activo) {
       this.valor.emit({
-        height: event.newRect.height,
-        width: event.newRect.width,
+        height: 225 - event.newRect.height,
+        width: event.newRect.width + 10,
+        id: this.template.id,
+        tipo: index,
+      });
+    }
+  }
+
+
+  onresizedVertical(event: ResizedEvent, activo?: boolean, index: number = 0) {
+    console.log(activo)
+    console.log(index)
+    console.log(event)
+    if (event.newRect != null && activo) {
+      this.valor.emit({
+        height: event.newRect.width + 10,
+        width: 250 - event.newRect.height,
         id: this.template.id,
         tipo: index,
       });
@@ -137,6 +154,23 @@ export class ImageBoxComponent {
       (template.id == 5 && image.id == 4)
       ? this.espaciado(image.width) + 'px'
       : '0px';
+  }
+
+  validarResize(template: Template, image: any): boolean{
+    return image.resize &&
+    (template.id == 1 ||
+      (template.id == 3 && image.id == 1) ||
+      (template.id == 4 && image.id == 2) ||
+      (template.id == 5 && image.id == 1) ||
+      (template.id == 5 && image.id == 3))
+  }
+
+  validarResizeVertical(template: Template, image: any): boolean{
+    return image.resize &&
+    (template.id == 1 ||
+      (template.id == 3 && image.id == 1) ||
+      (template.id == 4 && image.id == 2) ||
+      (template.id == 5 && image.id == 2))
   }
 
   retornarResize(template: Template, image: any): string {

@@ -26,5 +26,17 @@
 .container {
   overflow: hidden;
   position: relative;
-  background-color: gray;
+  background-color: #C0C0C0;;
+}
+
+.resize {
+  position: relative;
+  resize: horizontal;
+  background-color: transparent;
+  overflow-x: overlay;
+  z-index: 1; /* this makes the content clickable */
+}
+
+.resize-giro {
+  transform: rotate(90deg);
 }
