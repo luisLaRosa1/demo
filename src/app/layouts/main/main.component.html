@@ -1,0 +1,42 @@
+<div class="grid grid-cols-12 gap-5 mt-5 min-h-[500px]">
+  <div class="col-span-4 border-2 border-gray-100 p-4 rounded-sm">
+    <div class="flex justify-between">
+      @for (layout of layouts; track layout) {
+        <span
+          (click)="selectedLayout = layout"
+          class="py-1 px-6 bg-gray-100 hover:bg-gray-300  rounded-full cursor-pointer"
+          [ngClass]="{'bg-gray-300 border-gray-500 border-2': layout === selectedLayout}"
+        >{{ layout }}</span>
+      }
+    </div>
+    @if (selectedLayout) {
+      <div class="mt-5 flex gap-5">
+        @for (template of templates[selectedLayout]; track template.id) {
+          <app-template-selector class="p-1 border-2 border-gray-200" [ngClass]="{'  border-gray-400': selectedTemplate === template}" (click)="selectedTemplate = template" [template]="template"></app-template-selector>
+        }
+      </div>
+    }
+  </div>
+  <div class="col-span-8">
+    @if (selectedTemplate) {
+      <div class="flex justify-center gap-3 mb-3">
+        <button class="flex items-center gap-3 border-2 border-gray-200 rounded-lg py-1 px-3" [ngClass]="{'border-gray-500': isDraggable}" (click)="isDraggable = true">
+          <img ngSrc="/assets/drag-icon.png" width="20" height="20" alt="">
+          <span class="text-lg">Drag</span>
+        </button>
+        <button class="flex items-center gap-3 border-2 border-gray-200 rounded-lg py-1 px-3" [ngClass]="{'border-gray-500': !isDraggable}" (click)="isDraggable = false">
+          <img ngSrc="/assets/move-icon.png" width="20" height="20" alt="">
+          <span class="text-lg">move</span>
+        </button>
+      </div>
+      @switch (selectedTemplate.id) {
+        @case (1) {
+          <app-two [vertical]="false"></app-two>
+        }
+        @case (2) {
+          <app-two [vertical]="true"></app-two>
+        }
+      }
+    }
+  </div>
+</div>

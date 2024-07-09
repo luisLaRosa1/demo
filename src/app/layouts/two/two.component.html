@@ -1,0 +1,32 @@
+@if (vertical) {
+  <div class="flex justify-center items-center">
+    <div class="w-[500px] h-[500px] grid grid-rows-12">
+      <div [ngStyle]="{'grid-row': 'span ' + downSide}">
+        <img src="/assets/image-1.jpeg" class="w-full h-full object-cover " alt="">
+      </div>
+      <div [ngStyle]="{'grid-row': 'span ' + upSide}">
+        <img src="/assets/image-2.jpeg" class="w-full h-full object-cover" alt="">
+      </div>
+    </div>
+    <div class="h-[500px]">
+      <ngx-slider [(value)]="value" [options]="options"></ngx-slider>
+    </div>
+  </div>
+} @else {
+  <div class="flex justify-center items-center">
+    <div class="w-[500px] h-[500px] grid grid-cols-12">
+      <div [ngStyle]="{'grid-column': 'span ' + leftSide}">
+        <img src="/assets/image-1.jpeg" class="w-full h-full object-cover " alt="">
+      </div>
+      <div [ngStyle]="{'grid-column': 'span ' + rightSide}">
+        <img src="/assets/image-2.jpeg" class="w-full h-full object-cover" alt="">
+      </div>
+    </div>
+  </div>
+
+  <div class="flex justify-center">
+    <div class="w-[500px]">
+      <ngx-slider [(value)]="value" [options]="options"></ngx-slider>
+    </div>
+  </div>
+}
