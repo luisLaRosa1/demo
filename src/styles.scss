@@ -2,3 +2,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+input[type="range"] {
+  -webkit-appearance: none; /* Remove default slider appearance */
+  appearance: none;        /* Remove default slider appearance for modern browsers */
+  height: 5px;              /* Set a minimal height for the slider track */
+  background: transparent; /* Set background to transparent */
+  outline: none;           /* Remove outline when focused */
+}
+
+
+input[type="range"]::-webkit-slider-runnable-track {
+  background: none; /* Remove default track background (optional) */
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Remove default thumb appearance */
+  appearance: none;        /* Remove default thumb appearance for modern browsers */
+  width: 15px;              /* Set width for the handle */
+  height: 40px;              /* Set height for the handle */
+  background: #ccc;        /* Set background color for the handle */
+  border-radius: 12px;        /* Set rounded corners for the handle */
+  cursor: move; /* Set cursor to indicate interaction */
+  z-index: 99999;
+}

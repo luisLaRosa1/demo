@@ -1,6 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {NgStyle} from "@angular/common";
-import { Template } from '../custom-grid.component';
+import {Template} from "../custom-grid.component";
+import {NewTemplate} from "../../layouts/main/main.component";
 
 @Component({
   selector: 'app-template-selector',
@@ -12,7 +13,7 @@ import { Template } from '../custom-grid.component';
   styleUrl: './template-selector.component.scss'
 })
 export class TemplateSelectorComponent {
-  @Input() template!: Template;
+  @Input() template!: NewTemplate;
 
   formatColumnPosition(colEnd: number): string {
     return `span ${colEnd}`
