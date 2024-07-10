@@ -131,6 +131,7 @@ export class CustomGridComponent {
         break;
       case 6:
         if (dimen.tipo == 1) {
+          var resta: number = this.size - this.size / 3;
           this.templates[2][1].imagePositions[0].height = `${dimen.height}px`;
           this.templates[2][1].imagePositions[1].height = `${
             this.size - (dimen.height - this.size)
