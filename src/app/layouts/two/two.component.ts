@@ -1,13 +1,16 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {NgxSliderModule, Options} from "@angular-slider/ngx-slider";
-import {NgStyle} from "@angular/common";
+import {NgClass, NgStyle} from "@angular/common";
+import {FormsModule} from "@angular/forms";
 
 @Component({
   selector: 'app-two',
   standalone: true,
   imports: [
     NgxSliderModule,
-    NgStyle
+    NgStyle,
+    FormsModule,
+    NgClass
   ],
   templateUrl: './two.component.html',
   styleUrl: './two.component.scss'
@@ -37,7 +40,7 @@ export class TwoComponent implements OnInit {
   }
 
   get leftSide(){
-    return this.value;
+    return  this.value;
   }
 
   get rightSide() {
