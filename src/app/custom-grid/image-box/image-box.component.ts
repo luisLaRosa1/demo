@@ -122,12 +122,27 @@ export class ImageBoxComponent {
     return this.size - parseFloat(width.replace('px', ''));
   }
 
-  espaciadov2(width: string): number {
-    return (this.size-(this.size/3) - parseFloat(width.replace('px', '')));
+  espaciadov2(width: string, index: number): number {
+    var resta: number = this.size - this.size / 3;
+    return (
+      parseFloat(
+        this.template.imagePositions[index - 1].width.replace('px', '')
+      ) - resta
+    );
   }
 
-  espaciadov3(width: string): number {
-    return (this.size-(this.size/3) - parseFloat(width.replace('px', '')));
+  espaciadov3(width: string, index: number): number {
+    var resta: number = this.size - this.size / 3;
+    return (
+      resta -
+      (2 * this.size -
+        (parseFloat(
+          this.template.imagePositions[index - 2].width.replace('px', '')
+        ) +
+          parseFloat(
+            this.template.imagePositions[index - 1].width.replace('px', '')
+          )))
+    );
   }
 
   retornarMargenArriba(template: Template, image: any): string {
@@ -143,7 +158,7 @@ export class ImageBoxComponent {
       : '0px';
   }
 
-  retornarMargenIzquierdo(template: Template, image: any): string {
+  retornarMargenIzquierdo(template: Template, image: any, index = 0): string {
     return (!image.resize && template.id == 1) ||
       (template.id == 3 && image.id != 1) ||
       (template.id == 4 && image.id == 3) ||
@@ -151,9 +166,9 @@ export class ImageBoxComponent {
       (template.id == 5 && image.id == 4)
       ? this.espaciado(image.width) + 'px'
       : template.id == 6 && image.id == 3
-      ? this.espaciadov2(image.width) + 'px'
-      :  template.id == 6 && image.id == 4
-      ? this.espaciadov3(image.width) + 'px'
+      ? this.espaciadov2(image.width, index) + 'px'
+      : template.id == 6 && image.id == 4
+      ? this.espaciadov3(image.width, index) + 'px'
       : '0px';
   }
 

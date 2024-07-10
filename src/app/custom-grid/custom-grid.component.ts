@@ -149,6 +149,17 @@ export class CustomGridComponent {
             resta - (dimen.width - resta)
           }px`;
         }
+        if (dimen.tipo == 3) {
+          var total =
+            dimen.width +
+            parseFloat(
+              this.templates[2][1].imagePositions[1].width.replace('px', '')
+            );
+          this.templates[2][1].imagePositions[2].width = `${dimen.width}px`;
+          this.templates[2][1].imagePositions[3].width = `${
+            2 * this.size - total
+          }px`;
+        }
         this.selectedTemplate = this.templates[2][1];
         break;
     }
