@@ -21,6 +21,7 @@
   max-height: none;
   transition: transform 0.3s ease;
   position: absolute;
+  object-fit: contain;
 }
 
 .container {
