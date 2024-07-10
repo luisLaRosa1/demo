@@ -4,6 +4,7 @@ import {TemplateSelectorComponent} from "../../custom-grid/template-selector/tem
 import {NgClass, NgOptimizedImage} from "@angular/common";
 import {TwoComponent} from "../two/two.component";
 import {ThreeComponent} from "../three/three.component";
+import {FourComponent} from "../four/four.component";
 
 
 export interface NewTemplate {
@@ -28,12 +29,13 @@ export interface NewTemplate {
     NgOptimizedImage,
     TwoComponent,
     ThreeComponent,
+    FourComponent,
   ],
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss'
 })
 export class MainComponent {
-  selectedLayout = 2;
+  selectedLayout = 4;
   selectedTemplate!: NewTemplate;
   isDraggable = true;
 

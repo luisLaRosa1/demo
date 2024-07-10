@@ -1,5 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {NgxSliderModule, Options} from "@angular-slider/ngx-slider";
+import {Component, Input} from '@angular/core';
 import {NgClass, NgStyle} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 
@@ -7,7 +6,6 @@ import {FormsModule} from "@angular/forms";
   selector: 'app-two',
   standalone: true,
   imports: [
-    NgxSliderModule,
     NgStyle,
     FormsModule,
     NgClass
@@ -15,29 +13,10 @@ import {FormsModule} from "@angular/forms";
   templateUrl: './two.component.html',
   styleUrl: './two.component.scss'
 })
-export class TwoComponent implements OnInit {
+export class TwoComponent {
   @Input() vertical!: boolean
   @Input() isDraggable!: boolean;
   value = 6;
-  options: Options = {
-    stepsArray: [
-      { value: 1},
-      { value: 2},
-      { value: 3},
-      { value: 4},
-      { value: 5},
-      { value: 6},
-      { value: 7},
-      { value: 8},
-      { value: 9},
-      { value: 10},
-      { value: 11},
-    ]
-  };
-
-  ngOnInit() {
-    this.options.vertical = this.vertical
-  }
 
   get leftSide(){
     return  this.value;

@@ -1,26 +1,37 @@
-<div class="flex">
+<div class="flex gap-3">
   <div>
     <div class="flex justify-center items-center">
-      <div class="w-[500px] h-[500px] grid grid-cols-12 grid-rows-12">
-        <div [ngStyle]="{'grid-column': 'span ' + leftSide, 'grid-row': 'span 12'}">
-          <img src="/assets/image-1.jpeg" class="w-full h-full object-cover " alt="">
-        </div>
-        <div class="grid grid-rows-12" [ngStyle]="{'grid-column': 'span ' + rightSide, 'grid-row': 'span 12'}">
-          <img [ngStyle]="{'grid-row': 'span ' + downSide}" src="/assets/image-2.jpeg" class="w-full h-full object-cover" alt="">
-          <img [ngStyle]="{'grid-row': 'span ' + upSide}" src="/assets/image-3.jpg" class="w-full h-full object-cover" alt="">
-        </div>
-      </div>
-    </div>
+      <div class="w-[500px] h-[500px] grid grid-cols-12 grid-rows-12 relative">
+        @if (leftSide > 0 && rightSide < 12) {
+          <div [ngStyle]="{'grid-column': 'span ' + leftSide, 'grid-row': 'span 12'}">
+            <img src="/assets/image-1.jpeg" class="w-full h-full object-cover " alt="">
+          </div>
+        }
+        @if (rightSide > 0 && leftSide < 12) {
+          <div class="grid grid-rows-12 relative" [ngStyle]="{'grid-column': 'span ' + rightSide, 'grid-row': 'span 12'}">
+            @if (upSide > 0 && downSide < 12) {
+              <img [ngStyle]="{'grid-row': 'span ' + upSide}" src="/assets/image-2.jpeg" class="w-full h-full object-cover" alt="">
+            }
+            @if (downSide > 0 && upSide < 12) {
+              <img [ngStyle]="{'grid-row': 'span ' + downSide}" src="/assets/image-3.jpg" class="w-full h-full object-cover" alt="">
+            }
+            <input class="w-[500px] absolute top-1/2 -right-1/2 rotate-90" type="range" min="0" max="12" step="1" [(ngModel)]="verticalValue">
+          </div>
+        }
 
-    <div class="flex justify-center">
-      <div class="w-[500px]">
-        <ngx-slider [(value)]="value" [options]="options"></ngx-slider>
+        <input class="w-full absolute top-1/2" type="range" min="0" max="12" step="1" [(ngModel)]="value">
       </div>
     </div>
   </div>
-
-  <div class="h-[500px]">
-    <ngx-slider [(value)]="verticalValue" [options]="verticalOptions"></ngx-slider>
-  </div>
+    @if (verticalValue === 6) {
+      <div class="h-[500px] flex items-center gap-2">
+        <button (click)="verticalValue = verticalValue - 1">
+          <img ngSrc="/assets/arrow-up-icon.png" width="25" height="25" alt="arrow up">
+        </button>
+        <button (click)="verticalValue = verticalValue + 1">
+          <img ngSrc="/assets/arrow-down-icon.png" width="25" height="25" alt="arrow up">
+        </button>
+      </div>
+    }
 
 </div>
