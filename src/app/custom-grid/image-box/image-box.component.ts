@@ -17,6 +17,7 @@ import {
 import { AngularResizeEventModule, ResizedEvent } from 'angular-resize-event';
 import { ImageComponent } from '../image/image.component';
 import { Template, Dimension, DimensionImagen } from '../custom-grid.component';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-image-box',
@@ -42,9 +43,11 @@ export class ImageBoxComponent {
   cargoProceso: boolean = true;
   inicio: number = 0;
   isDragable: boolean = true;
+  desactivaresize: boolean = false;
 
   constructor(
     @Inject(DOCUMENT) document: Document,
+    private sanitizer: DomSanitizer,
     private cd: ChangeDetectorRef
   ) {}
 
@@ -173,14 +176,16 @@ export class ImageBoxComponent {
   }
 
   retornarResize(template: Template, image: any): string {
-    return image.resize &&
-      (template.id == 1 ||
-        (template.id == 3 && image.id == 1) ||
-        (template.id == 4 && image.id == 2) ||
-        (template.id == 5 && image.id == 1) ||
-        (template.id == 5 && image.id == 3) ||
-        (template.id == 6 && image.id == 2) ||
-        (template.id == 6 && image.id == 3))
+    return this.desactivaresize
+      ? 'none'
+      : image.resize &&
+        (template.id == 1 ||
+          (template.id == 3 && image.id == 1) ||
+          (template.id == 4 && image.id == 2) ||
+          (template.id == 5 && image.id == 1) ||
+          (template.id == 5 && image.id == 3) ||
+          (template.id == 6 && image.id == 2) ||
+          (template.id == 6 && image.id == 3))
       ? 'horizontal'
       : image.resize &&
         (template.id == 2 ||
