@@ -1,6 +1,9 @@
 <div class="template-container">
-  @for (position of selectedTemplate.positions; track position.image) {
+  @for (position of selectedTemplate.positions; track position.image; let index = $index) {
     <div
+      id="image-{{index}}"
+      (dragover)="onDragStart($event,index)"
+      (drop)="onDrop($event,index)"
       style="background-color: white"
       [ngStyle]="{
               'grid-column': 'span ' + position.colSpan,

@@ -13,4 +13,24 @@ import {NgStyle} from "@angular/common";
 })
 export class ImageGridComponent {
   @Input() selectedTemplate!: LayoutTemplate;
+  cargoProceso: boolean = true;
+  inicio: number = 0;
+
+
+  onDragStart(event: any, idx: any) {
+    event.preventDefault();
+    if (this.cargoProceso) {
+      this.cargoProceso = false;
+      this.inicio = idx;
+    }
+  }
+
+  onDrop(event: any, idx: any) {
+    event.preventDefault();
+    this.cargoProceso = true;
+    const imagen2 = this.selectedTemplate.positions[idx].image;
+    this.selectedTemplate.positions[idx].image =
+      this.selectedTemplate.positions[this.inicio].image;
+    this.selectedTemplate.positions[this.inicio].image = imagen2;
+  }
 }
