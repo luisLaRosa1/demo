@@ -1,0 +1,23 @@
+.main-box {
+  width: 500px;
+  height: 500px;
+  background-color: #E4E5E7;
+  border-radius: 9px;
+  padding: 40px;
+  position: relative;
+
+  .grid-button {
+    top: 10px;
+    left: 10px;
+    background-color: #FFA827;
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+

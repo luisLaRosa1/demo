@@ -1,0 +1,21 @@
+<div class="layout-selector-menu">
+  @for (template of templates; track template.id) {
+    <div
+      class="grid-container"
+      (click)="onSelectTemplate.emit(template)"
+      [ngStyle]="{
+        'background-color': selectedTemplate?.id === template.id ? '#FFA827' : 'white',
+      }">
+    @for (position of template.positions; track position.image) {
+        <div
+          class="shape"
+          [ngStyle]="{
+            'grid-column': 'span ' + position.colSpan,
+            'grid-row': 'span ' + position.rowSpan,
+          }">
+        </div>
+    }
+    </div>
+
+  }
+</div>

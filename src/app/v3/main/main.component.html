@@ -1,0 +1,19 @@
+<div class="main-box">
+  <button
+    (click)="selectLayoutMode = !selectLayoutMode"
+    class="grid-button"
+    [ngStyle]="{
+       'border': selectLayoutMode ? '2px solid black' : 'none',
+    }"
+  >
+    <img src="/assets/layout-icon.png" width="20" height="20" alt="">
+  </button>
+  @if (selectLayoutMode) {
+    <app-layout-selector [templates]="templates[2]"  [selectedTemplate]="selectedTemplate" (onSelectTemplate)="selectedTemplate = $event"></app-layout-selector>
+  }
+
+  @if (selectedTemplate) {
+    <app-image-grid [selectedTemplate]="selectedTemplate"></app-image-grid>
+  }
+
+</div>

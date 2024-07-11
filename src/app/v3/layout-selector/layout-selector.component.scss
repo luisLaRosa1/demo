@@ -1,0 +1,34 @@
+.layout-selector-menu {
+  padding: 1rem;
+  display: flex;
+  gap: 1rem;
+  width: fit-content;
+  border-radius: 5px;
+  background-color: white;
+  position: absolute;
+  left: 50%;
+  top: 10px;
+  transform: translateX(-50%);
+  border: 1px solid lightgray;
+
+  .shape {
+    border: 2px solid black;
+    border-radius: 3px;
+    background: white;
+  }
+
+  .grid-container {
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    gap: .15rem;
+    padding: .3rem;
+    border-radius: 3px;
+    border: 1px solid black;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+  }
+}
+
+

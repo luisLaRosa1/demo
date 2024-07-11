@@ -1,0 +1,13 @@
+<div class="template-container">
+  @for (position of selectedTemplate.positions; track position.image) {
+    <div
+      style="background-color: white"
+      [ngStyle]="{
+              'grid-column': 'span ' + position.colSpan,
+              'grid-row': 'span ' + position.rowSpan,
+            }"
+    >
+      <img [src]="position.image"  style="object-fit: cover; width: 100%; height: 100%" alt="">
+    </div>
+  }
+</div>

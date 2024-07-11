@@ -1,0 +1,8 @@
+.template-container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  height: 100%;
+  width: 100%;
+  gap: 1rem
+}
