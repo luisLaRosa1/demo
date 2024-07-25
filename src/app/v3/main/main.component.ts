@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {LayoutSelectorComponent, LayoutTemplate} from "../layout-selector/layout-selector.component";
 import {JsonPipe, NgClass, NgForOf, NgIf, NgStyle} from "@angular/common";
 import {ImageGridComponent} from "../image-grid/image-grid.component";
+import { toPng } from "html-to-image";
 
 @Component({
   selector: 'app-main',
@@ -83,6 +84,15 @@ export class MainComponent {
         ]
       },
     ]
+  }
+
+  customPrintV2() {
+    const node = document.getElementById('template-container');
+    toPng(node!)
+      .then((dataUrl) => {
+        console.log(dataUrl);
+        this.resultImage = dataUrl;
+      })
   }
 
   customPrint() {
