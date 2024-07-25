@@ -17,3 +17,10 @@
   }
 
 </div>
+
+<button (click)="customPrint()">print</button>
+
+
+@if (resultImage) {
+  <img [src]="resultImage" width="500" height="500" alt="">
+}
